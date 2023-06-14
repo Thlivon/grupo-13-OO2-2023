@@ -24,6 +24,7 @@ public class Predio {
 	private String nombre;
 
 	public Predio(int idPredio, String nombre) {
+		super();
 		this.idPredio = idPredio;
 		this.nombre = nombre;
 	}

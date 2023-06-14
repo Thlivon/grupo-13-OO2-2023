@@ -31,7 +31,7 @@ public class Lugar {
 	protected Predio predio;
 
 	public Lugar(int idLugar, String nombre, Predio predio) {
-		
+		super();
 		this.idLugar = idLugar;
 		this.nombre = nombre;
 		this.predio = predio;

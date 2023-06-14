@@ -15,6 +15,7 @@ import lombok.Setter;
 @Entity
 @Getter @Setter @NoArgsConstructor
 @Table(name="dispositivo")
+
 public abstract class Dispositivo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +27,7 @@ public abstract class Dispositivo {
 	
 	public Dispositivo(int idDispositivo) {
 		super();
-		this.idDispositivo = idDispositivo;
+		this.idDispositivo = idDispositivo; //altaLogica y activado = null
 	}
 
 	public Dispositivo(int idDispositivo, boolean altaLogica, boolean activado) {
@@ -34,6 +35,13 @@ public abstract class Dispositivo {
 		this.idDispositivo = idDispositivo;
 		this.altaLogica = altaLogica;
 		this.activado = activado;
+	}
+	
+	public Dispositivo(int idDispositivo, boolean altaLogicaYActivadoEmpiezanEn) {
+		super();
+		this.idDispositivo = idDispositivo;
+		this.altaLogica = altaLogicaYActivadoEmpiezanEn;
+		this.activado = altaLogicaYActivadoEmpiezanEn;
 	}
 	
 	

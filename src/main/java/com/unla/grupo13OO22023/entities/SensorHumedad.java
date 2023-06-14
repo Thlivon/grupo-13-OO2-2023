@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter @Setter @NoArgsConstructor
 @Table(name="SensorHumedad")
 
-public class SensorHumedad {
+public class SensorHumedad extends Dispositivo{
 	
 	@Column(name="tempBaja")
 	private boolean tempBaja;
@@ -22,11 +22,13 @@ public class SensorHumedad {
 	@JoinColumn(name="espacioVerde")
 	private EspacioVerde espacioVerde;
 
-	public SensorHumedad(boolean tempBaja, EspacioVerde espacioVerde) {
-
-		this.tempBaja = tempBaja;
+	public SensorHumedad(int idDispositivo, EspacioVerde espacioVerde) {
+		super(idDispositivo, false);
+		this.tempBaja = false;
 		this.espacioVerde = espacioVerde;
 	}
+
+	
 	
 	
 }
