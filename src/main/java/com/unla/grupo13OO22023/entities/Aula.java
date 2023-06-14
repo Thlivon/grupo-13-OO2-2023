@@ -38,7 +38,7 @@ public class Aula {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="edificio", nullable=false)
 	private Lugar edificio;
-
+ 
 	public Aula(int idAula, boolean cortinas, boolean luces, CamaraAula camara, Lugar edificio) {
 		super();
 		this.idAula = idAula;
