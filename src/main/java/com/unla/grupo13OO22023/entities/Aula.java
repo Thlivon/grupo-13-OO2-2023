@@ -32,7 +32,7 @@ public class Aula {
 	private boolean luces;
 	
 	@OneToOne
-	@JoinColumn(name="CamaraAula")
+	@JoinColumn(name="camaraAula")
 	private CamaraAula camara;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

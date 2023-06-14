@@ -12,8 +12,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-//Comprobar nombre de las tablas luego de creer la bdd en grupo!!
-//Agregamos la relacion con Aula? chequear
 @Entity
 @Getter @Setter @NoArgsConstructor
 @Table(name="dispositivo")

@@ -2,12 +2,9 @@ package com.unla.grupo13OO22023.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,28 +12,21 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
-@Table(name="Lugar")
+@Table(name="Predio")
 
-public class Lugar {
+public class Predio {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected int idLugar;
+	private int idPredio;
 	
 	@Column(name="nombre")
-	protected String nombre;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="predio", nullable=false)
-	protected Predio predio;
+	private String nombre;
 
-	public Lugar(int idLugar, String nombre, Predio predio) {
-		
-		this.idLugar = idLugar;
+	public Predio(int idPredio, String nombre) {
+		this.idPredio = idPredio;
 		this.nombre = nombre;
-		this.predio = predio;
 	}
-	
 	
 	
 	
