@@ -30,7 +30,14 @@ public abstract class Dispositivo {
 	
 	public Dispositivo(int idDispositivo) {
 		super();
-		this.idDispositivo = idDispositivo; //altaLogica y activado = null
+		this.idDispositivo = idDispositivo;
+	}
+
+	public Dispositivo(int idDispositivo, boolean altaLogicaYActivadoEmpiezanEn) {
+		super();
+		this.idDispositivo = idDispositivo;
+		this.altaLogica = altaLogicaYActivadoEmpiezanEn;
+		this.activado = altaLogicaYActivadoEmpiezanEn;
 	}
 
 	public Dispositivo(int idDispositivo, boolean altaLogica, boolean activado) {
@@ -40,12 +47,7 @@ public abstract class Dispositivo {
 		this.activado = activado;
 	}
 	
-	public Dispositivo(int idDispositivo, boolean altaLogicaYActivadoEmpiezanEn) {
-		super();
-		this.idDispositivo = idDispositivo;
-		this.altaLogica = altaLogicaYActivadoEmpiezanEn;
-		this.activado = altaLogicaYActivadoEmpiezanEn;
-	}
+	
 	
 	
 }

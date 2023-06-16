@@ -14,9 +14,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-//Comprobar nombre de las tablas luego de creer la bdd en grupo!!
-
 @Entity
 @Getter @Setter @NoArgsConstructor
 @Table(name="aula")
@@ -39,6 +36,15 @@ public class Aula {
 	@JoinColumn(name="edificio", nullable=false)
 	private Lugar edificio;
  
+
+	public Aula(boolean cortinas, boolean luces, CamaraAula camara, Lugar edificio) {
+		super();
+		this.cortinas = cortinas;
+		this.luces = luces;
+		this.camara = camara;
+		this.edificio = edificio;
+	}
+
 	public Aula(int idAula, boolean cortinas, boolean luces, CamaraAula camara, Lugar edificio) {
 		super();
 		this.idAula = idAula;
@@ -47,6 +53,14 @@ public class Aula {
 		this.camara = camara;
 		this.edificio = edificio;
 	}
+
+	public Aula(int idAula, CamaraAula camara, Lugar edificio) {
+		super();
+		this.idAula = idAula;
+		this.camara = camara;
+		this.edificio = edificio;
+	}
+	
 	
 	
 }
