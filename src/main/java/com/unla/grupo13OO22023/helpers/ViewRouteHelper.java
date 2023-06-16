@@ -6,7 +6,8 @@ public class ViewRouteHelper {
 	public final static String CAMARA_LISTA = "camara/Lista";
 	public final static String CAMARA_NEW = "camara/New";
 	//REDIRECT
-	public final static String CAMARA_CREAR = "camara/Lista";
+
+	public final static String CAMARA_CREAR = "/camara";
 	
 	//---BOLBON---
 	//SENSOR CONTENEDOR

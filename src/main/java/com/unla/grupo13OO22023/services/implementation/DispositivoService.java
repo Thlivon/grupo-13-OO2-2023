@@ -48,8 +48,7 @@ public class DispositivoService implements IDispositivoService{
 
 	@Override
 	public List<CamaraAula> getAllCamaras() {
-		// TODO Auto-generated method stub
-		return null;
+		return dispositivoRepository.getAllCamaras();
 	}
 	@Override
 	public List<SensorContenedor> getAllSensoresContenedor() {
