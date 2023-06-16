@@ -11,7 +11,7 @@ import com.unla.grupo13OO22023.entities.Dispositivo;
 import com.unla.grupo13OO22023.repositories.IDispositivoRepository;
 import com.unla.grupo13OO22023.services.IDispositivoService;
 
-@Service
+@Service("dispositivoService")
 public class DispositivoService implements IDispositivoService{
 	@Autowired
 	@Qualifier("dispositivoRepository")

@@ -21,7 +21,7 @@ import com.unla.grupo13OO22023.services.IDispositivoService;
 @RequestMapping("/camara")
 public class CamaraController {
 	@Autowired
-	@Qualifier("camaraService")
+	@Qualifier("dispositivoService")
 	private IDispositivoService dispositivoService;
 	
 	private ModelMapper modelMapper = new ModelMapper();
