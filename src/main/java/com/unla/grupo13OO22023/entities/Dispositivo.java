@@ -28,6 +28,12 @@ public class Dispositivo {
 	@Column(name="activado")
 	private boolean activado;
 	
+	
+	//Si no lo agregaba el /new me tiraba error
+	public Dispositivo() {
+		super();
+	}
+
 	public Dispositivo(int idDispositivo) {
 		super();
 		this.idDispositivo = idDispositivo;

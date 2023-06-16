@@ -31,14 +31,21 @@ public class DispositivoController {
 	}
 	//-----------------------------
 	//Falta implementarlo en el html
-	@GetMapping("/")
+	@GetMapping("")
 	public ModelAndView lista() {
 		ModelAndView mAV= new ModelAndView(ViewRouteHelper.DISPOSITIVO_LISTA);
 		mAV.addObject("dispositivos", dispositivoService.getAll());
 		return mAV;
 	}
 	
-	@PostMapping("/crear")
+	@GetMapping("/new")
+	public ModelAndView newDispositivo() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_NEW);
+		mAV.addObject("dispositivo", new Dispositivo());
+		return mAV;
+	}
+	
+	@PostMapping("/create")
 	public RedirectView crear(@ModelAttribute("dispositivo") DispositivoModel dispositivoModel) {
 		dispositivoService.insertOrUpdate(modelMapper.map(dispositivoModel, Dispositivo.class));
 		return new RedirectView(ViewRouteHelper.DISPOSITIVO_CREAR);
