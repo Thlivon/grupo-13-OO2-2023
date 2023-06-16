@@ -21,6 +21,10 @@ public class CamaraAula extends Dispositivo {
 	private Aula aula;
 	
 	
+	public CamaraAula() {
+		super();
+	}
+
 	public CamaraAula(int idDispositivo, Aula aula) {
 		super(idDispositivo);
 		this.aula = aula;

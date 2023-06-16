@@ -5,12 +5,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
-public class DispositivoModel {
-	private int idDispositivo;
+public class CamaraModel {
+	private int idCamara;
 
-	public DispositivoModel(int idDispositivo) {
+	public CamaraModel(int idCamara) {
 		super();
-		this.idDispositivo = idDispositivo;
+		this.idCamara = idCamara;
 	}
 	
 }

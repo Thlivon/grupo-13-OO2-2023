@@ -13,44 +13,20 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.grupo13OO22023.entities.Dispositivo;
 import com.unla.grupo13OO22023.helpers.ViewRouteHelper;
-import com.unla.grupo13OO22023.models.DispositivoModel;
-import com.unla.grupo13OO22023.services.IDispositivoService;
 
 @Controller
 @RequestMapping("/dispositivo")
 public class DispositivoController {
-	@Autowired
-	@Qualifier("dispositivoService")
-	private IDispositivoService dispositivoService;
-	
-	private ModelMapper modelMapper = new ModelMapper();
+//	@Autowired
+//	@Qualifier("dispositivoService")
+//	private IDispositivoService dispositivoService;
+//	
+//	private ModelMapper modelMapper = new ModelMapper();
 
 	@GetMapping("lista")
 	public String listaDisposotivos() {
 		return "ListaDispositivos";
 	}
-	//-----------------------------
-	//Falta implementarlo en el html
-	@GetMapping("")
-	public ModelAndView lista() {
-		ModelAndView mAV= new ModelAndView(ViewRouteHelper.DISPOSITIVO_LISTA);
-		mAV.addObject("dispositivos", dispositivoService.getAll());
-		return mAV;
-	}
-	
-	@GetMapping("/new")
-	public ModelAndView newDispositivo() {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_NEW);
-		mAV.addObject("dispositivo", new Dispositivo());
-		return mAV;
-	}
-	
-	@PostMapping("/create")
-	public RedirectView crear(@ModelAttribute("dispositivo") DispositivoModel dispositivoModel) {
-		dispositivoService.insertOrUpdate(modelMapper.map(dispositivoModel, Dispositivo.class));
-		return new RedirectView(ViewRouteHelper.DISPOSITIVO_CREAR);
-	}
-	//----------------------------
 	@GetMapping("/agregardispositivo")
     public String agregarDispositvo(/*Model model*/) {
         //Employee employee = new Employee(); //implementacion logica luego
