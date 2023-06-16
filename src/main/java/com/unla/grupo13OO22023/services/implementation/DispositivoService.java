@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.unla.grupo13OO22023.entities.CamaraAula;
 import com.unla.grupo13OO22023.entities.Dispositivo;
+import com.unla.grupo13OO22023.entities.SensorContenedor;
 import com.unla.grupo13OO22023.repositories.IDispositivoRepository;
 import com.unla.grupo13OO22023.services.IDispositivoService;
 
@@ -47,6 +48,11 @@ public class DispositivoService implements IDispositivoService{
 
 	@Override
 	public List<CamaraAula> getAllCamaras() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<SensorContenedor> getAllSensoresContenedor() {
 		// TODO Auto-generated method stub
 		return null;
 	}

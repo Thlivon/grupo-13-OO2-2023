@@ -20,6 +20,10 @@ public class SensorContenedor extends Dispositivo {
 	@OneToOne
 	@JoinColumn(name="contenedor")
 	private Contenedor contenedor;
+	
+	public SensorContenedor() {
+		super();
+	}
 
 	public SensorContenedor(int idDispositivo, boolean estaLleno) {
 		super(idDispositivo);
