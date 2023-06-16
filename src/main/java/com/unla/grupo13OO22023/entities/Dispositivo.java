@@ -19,7 +19,7 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name="dispositivo")
 
-public abstract class Dispositivo {
+public class Dispositivo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDispositivo;
