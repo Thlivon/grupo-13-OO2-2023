@@ -20,7 +20,10 @@ public class EspacioVerde extends Lugar{
 
 	public EspacioVerde(int idLugar, String nombre, Predio predio) {
 		super(idLugar, nombre, predio);
-		this.senHumedad = null;
+	}
+	public EspacioVerde(int idLugar, String nombre, Predio predio, SensorHumedad sensor) {
+		super(idLugar, nombre, predio);
+		this.senHumedad = sensor;
 	}
 	
 	//agregar despues el sensor

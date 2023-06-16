@@ -9,22 +9,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-//Comprobar nombre de las tablas luego de creer la bdd en grupo!!
 @Entity
 @Getter @Setter @NoArgsConstructor
-@Table(name="camaraAula")
-public class CamaraAula extends Dispositivo {
-	@Column(name="hayAlguien")
-	private boolean hayAlguien;
+@Table(name="SensorContenedor")
+public class SensorContenedor extends Dispositivo {
+	
+	@Column(name="estaLleno")
+	private boolean estaLleno;
 	
 	@OneToOne
-	@JoinColumn(name="aula")
-	private Aula aula;
-	
-	public CamaraAula(int idDispositivo, boolean hayAlguien) {
+	@JoinColumn(name="contenedor")
+	private Contenedor contenedor;
+
+	public SensorContenedor(int idDispositivo, boolean estaLleno) {
 		super(idDispositivo);
-		this.hayAlguien = hayAlguien;
+		this.estaLleno = estaLleno;
 	}
 	
-
+	
 }
