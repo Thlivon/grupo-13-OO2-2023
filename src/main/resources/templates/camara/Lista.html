@@ -1,16 +1,16 @@
 <table border="1px">
 	<thead>
 		<tr>
-			<th>Name</th>
-			<th>View</th>
+			<th>Id</th>
+			<th>Aula</th>
+			<th>Activada</th>
+			<th>HayAlguien</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr th:each="camaraAula : ${camaras}">
-		<!--	<td><span th:text="${camara.hayAlguien}" /></td>
-			<td>
-				<a th:href="@{/camara)}">View</a>
-			</td>-->
+			<td th:text="${camaraAula.idDispositivo}">Id</td>
+			<!--<td th:text="${camaraAula.aula.lugar}">Aula</td>-->
 		</tr>
 	</tbody>
 </table>
