@@ -12,11 +12,11 @@ import com.unla.grupo13OO22023.repositories.IAulaRepository;
 import com.unla.grupo13OO22023.services.IAulaService;
 
 @Service("aulaService")
-public class AulaService implements IAulaService{
+public class AulaService implements IAulaService {
 	@Autowired
 	@Qualifier("aulaRepository")
 	private IAulaRepository aulaRepository;
-	
+
 	@Override
 	public List<Aula> getAll() {
 		return aulaRepository.findAll();
@@ -26,10 +26,14 @@ public class AulaService implements IAulaService{
 	public Aula findByIdAula(int idAula) {
 		return aulaRepository.findByIdAula(idAula);
 	}
+
 	@Override
 	public Aula findByLugar(String lugar) {
 		return aulaRepository.findByLugar(lugar);
 	}
 
-
+	public Aula insertOrUpdate(Aula aula) {
+		Aula aulaNueva = aulaRepository.save(aula);
+		return aulaNueva;
+	}
 }

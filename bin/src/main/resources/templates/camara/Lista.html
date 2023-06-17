@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>ListaDispositivos</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container my-2" align="center">
+
+		<h3>Lista de Camaras</h3>
+		<!-- Cuando le dan click se referencia a otro controller por eso falla) -->
+		<a th:href="@{/camara/new}" class="btn btn-primary btn-sm mb-3">Agregar Dispositivo</a>
+		<table style="width:80%" border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Aula</th>
+					<th>Activada</th>
+					<th>HayAlguien</th>
+				</tr>
+			</thead>
+			<!-- Modificar referenciando a lo nuestro (todavia nose bien como se hace) -->
+			<tbody>
+				<tr th:each="camaraAula : ${camaras}">
+					<td th:text="${camaraAula.idDispositivo}">Id</td>
+					<td th:text="${camaraAula.aula.lugar}">Aula</td>
+					<td th:text="${camaraAula.activado}">Activada</td>
+					<td th:text="${camaraAula.hayAlguien}">HayAlguien</td>
+					<td>
+						<a th:href="@{/camara/{idDispositivo}(idDispositivo=${camaraAula.idDispositivo})}">
+							Ver detalles
+						</a>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

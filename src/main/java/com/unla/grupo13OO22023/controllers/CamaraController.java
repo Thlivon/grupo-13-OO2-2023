@@ -53,11 +53,13 @@ public class CamaraController {
 
 	@PostMapping("/create")
 	public RedirectView crear(@ModelAttribute("camara") CamaraAula camara, ModelMap model) {
-	    CamaraAula camaraAula = new CamaraAula();
-	    modelMapper.map(camara, camaraAula);
+//	    CamaraAula camaraAula = new CamaraAula();
+//	    modelMapper.map(camara, camaraAula);
 	    Aula aula = aulaService.findByIdAula(camara.getAula().getIdAula());
-	    camaraAula.setAula(aula);
-	    dispositivoService.insertOrUpdate(camaraAula);
+//	    camaraAula.setAula(aula);
+	    aula.setCamara(camara);
+	    dispositivoService.insertOrUpdate(camara);
+	    aulaService.insertOrUpdate(aula);
 	    model.addAttribute("aulas", aulaService.getAll());
 	    return new RedirectView(ViewRouteHelper.CAMARA_ROOT);
 	}

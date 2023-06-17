@@ -9,4 +9,5 @@ public interface IAulaService {
 	public List<Aula> getAll();
 	public Aula findByIdAula(int idAula);
 	public Aula findByLugar(String lugar);
+	public Aula insertOrUpdate(Aula aula);
 }
