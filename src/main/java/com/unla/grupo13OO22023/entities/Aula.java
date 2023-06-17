@@ -37,6 +37,13 @@ public class Aula {
 		super();
 	}
 
+	
+	public Aula(String lugar) {
+		super();
+		this.lugar = lugar;
+	}
+
+
 	public Aula(int idAula, String lugar, boolean lucesYcortinas, CamaraAula camara) {
 		super();
 		this.idAula = idAula;
