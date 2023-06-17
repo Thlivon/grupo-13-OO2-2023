@@ -12,6 +12,7 @@ import com.unla.grupo13OO22023.entities.Aula;
 @Repository("aulaRepository")
 public interface IAulaRepository extends JpaRepository<Aula, Serializable> {
 	public Aula findByIdAula(int idAula);
+	public Aula findByLugar(String lugar);
 
 	@Query("SELECT a FROM Aula a")
 	public List<Aula> getAllAulas();

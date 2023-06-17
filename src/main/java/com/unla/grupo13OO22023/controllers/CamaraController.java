@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,64 +22,64 @@ import com.unla.grupo13OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo13OO22023.services.IAulaService;
 import com.unla.grupo13OO22023.services.IDispositivoService;
 
-
 @Controller
 @RequestMapping("/camara")
 public class CamaraController {
 	@Autowired
 	@Qualifier("dispositivoService")
 	private IDispositivoService dispositivoService;
-	
+
 	@Autowired
 	@Qualifier("aulaService")
 	private IAulaService aulaService;
-	
+
 	private ModelMapper modelMapper = new ModelMapper();
-	
+
 	@GetMapping("")
 	public ModelAndView lista() {
-		ModelAndView mAV= new ModelAndView(ViewRouteHelper.CAMARA_LISTA);
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAMARA_LISTA);
 		mAV.addObject("camaras", dispositivoService.getAllCamaras());
 		return mAV;
 	}
-	
+
 	@GetMapping("/new")
 	public ModelAndView newCamara() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAMARA_NEW);
 		mAV.addObject("camara", new CamaraAula());
-        mAV.addObject("aulas", aulaService.getAll());
+		mAV.addObject("aulas", aulaService.getAll());
 		return mAV;
 	}
-	
+
 	@PostMapping("/create")
-	public RedirectView crear(@ModelAttribute("camara") CamaraAula camara) {
-	
-//		switch()
-//		case 1: camara.setAula(lstAulas.get(0));
-//		
-		dispositivoService.insertOrUpdate(camara);
-		return new RedirectView(ViewRouteHelper.CAMARA_ROOT);
+	public RedirectView crear(@ModelAttribute("camara") CamaraAula camara, ModelMap model) {
+	    CamaraAula camaraAula = new CamaraAula();
+	    modelMapper.map(camara, camaraAula);
+	    Aula aula = aulaService.findByIdAula(camara.getAula().getIdAula());
+	    camaraAula.setAula(aula);
+	    dispositivoService.insertOrUpdate(camaraAula);
+	    model.addAttribute("aulas", aulaService.getAll());
+	    return new RedirectView(ViewRouteHelper.CAMARA_ROOT);
 	}
-	
-	
+
+
+
 	@GetMapping("/{idDispositivo}")
 	public ModelAndView get(@PathVariable("idDispositivo") int idDispositivo) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAMARA_UPDATE);
 		mAV.addObject("camara", dispositivoService.findByIdDispositivo(idDispositivo));
 		return mAV;
 	}
-	
+
 	@PostMapping("/update")
-    public RedirectView update(@ModelAttribute("camara") CamaraAula camara) {
-        dispositivoService.insertOrUpdate(camara);
-        return new RedirectView(ViewRouteHelper.CAMARA_ROOT);
-    }
-	
+	public RedirectView update(@ModelAttribute("camara") CamaraAula camara) {
+		dispositivoService.insertOrUpdate(camara);
+		return new RedirectView(ViewRouteHelper.CAMARA_ROOT);
+	}
+
 	@PostMapping("/delete/{idDispositivo}")
 	public RedirectView delete(@PathVariable("idDispositivo") int idDispositivo) {
 		dispositivoService.remove(idDispositivo);
 		return new RedirectView(ViewRouteHelper.CAMARA_ROOT);
 	}
-	
 
 }

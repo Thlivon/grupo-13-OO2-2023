@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.unla.grupo13OO22023.entities.Aula;
+import com.unla.grupo13OO22023.entities.Dispositivo;
 import com.unla.grupo13OO22023.repositories.IAulaRepository;
 import com.unla.grupo13OO22023.services.IAulaService;
 
@@ -20,5 +21,15 @@ public class AulaService implements IAulaService{
 	public List<Aula> getAll() {
 		return aulaRepository.findAll();
 	}
+
+	@Override
+	public Aula findByIdAula(int idAula) {
+		return aulaRepository.findByIdAula(idAula);
+	}
+	@Override
+	public Aula findByLugar(String lugar) {
+		return aulaRepository.findByLugar(lugar);
+	}
+
 
 }

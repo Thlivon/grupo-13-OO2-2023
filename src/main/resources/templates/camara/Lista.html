@@ -10,8 +10,7 @@
 	<tbody>
 		<tr th:each="camaraAula : ${camaras}">
 			<td th:text="${camaraAula.idDispositivo}">Id</td>
-			<th>Aca va el aula</th>
-			<!--<td th:text="${camaraAula.aula.lugar}">Aula</td>-->
+			<td th:text="${camaraAula.aula.lugar}">Aula</td>
 			<td th:text="${camaraAula.activado}">Activada</td>
 			<td th:text="${camaraAula.hayAlguien}">HayAlguien</td>
 			<td>
