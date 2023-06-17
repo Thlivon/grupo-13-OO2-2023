@@ -42,6 +42,7 @@ public class CamaraController {
 		return mAV;
 	}
 
+	//1 aula no puede tener mas de 1 dispositivo
 	@GetMapping("/new")
 	public ModelAndView newCamara() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAMARA_NEW);
@@ -62,7 +63,7 @@ public class CamaraController {
 	}
 
 
-
+	//vista de 1 dispositivo
 	@GetMapping("/{idDispositivo}")
 	public ModelAndView get(@PathVariable("idDispositivo") int idDispositivo) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAMARA_UPDATE);
