@@ -52,6 +52,30 @@ public class Dispositivo {
 		this.altaLogica = altaLogica;
 		this.activado = activado;
 	}
+
+	public int getIdDispositivo() {
+		return idDispositivo;
+	}
+
+	public void setIdDispositivo(int idDispositivo) {
+		this.idDispositivo = idDispositivo;
+	}
+
+	public boolean isAltaLogica() {
+		return altaLogica;
+	}
+
+	public void setAltaLogica(boolean altaLogica) {
+		this.altaLogica = altaLogica;
+	}
+
+	public boolean isActivado() {
+		return activado;
+	}
+
+	public void setActivado(boolean activado) {
+		this.activado = activado;
+	}
 	
 	
 	

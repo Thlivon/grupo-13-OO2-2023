@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
-@Table(name="SensorHumedad")
+@Table(name="sensorHumedad")
 
 public class SensorHumedad extends Dispositivo{
 	

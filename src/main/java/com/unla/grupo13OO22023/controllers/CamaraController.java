@@ -1,5 +1,8 @@
 package com.unla.grupo13OO22023.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.unla.grupo13OO22023.entities.Aula;
 import com.unla.grupo13OO22023.entities.CamaraAula;
-import com.unla.grupo13OO22023.entities.Dispositivo;
 import com.unla.grupo13OO22023.helpers.ViewRouteHelper;
+import com.unla.grupo13OO22023.services.IAulaService;
 import com.unla.grupo13OO22023.services.IDispositivoService;
 
 
@@ -23,6 +27,10 @@ public class CamaraController {
 	@Autowired
 	@Qualifier("dispositivoService")
 	private IDispositivoService dispositivoService;
+	
+	@Autowired
+	@Qualifier("aulaService")
+	private IAulaService aulaService;
 	
 	private ModelMapper modelMapper = new ModelMapper();
 	
@@ -37,11 +45,17 @@ public class CamaraController {
 	public ModelAndView newCamara() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAMARA_NEW);
 		mAV.addObject("camara", new CamaraAula());
+	//funciona
+        mAV.addObject("aulas", aulaService.getAll());
 		return mAV;
 	}
 	
 	@PostMapping("/create")
 	public RedirectView crear(@ModelAttribute("camara") CamaraAula camara) {
+	
+//		switch()
+//		case 1: camara.setAula(lstAulas.get(0));
+//		
 		dispositivoService.insertOrUpdate(modelMapper.map(camara, CamaraAula.class));
 		return new RedirectView(ViewRouteHelper.CAMARA_CREAR);
 	}

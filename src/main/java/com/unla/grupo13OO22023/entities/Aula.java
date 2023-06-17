@@ -22,45 +22,59 @@ public class Aula {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idAula;
 	
-	@Column(name="cortinas")
-	private boolean cortinas;
+	@Column(name="lugar")
+	private String lugar;
 	
-	@Column(name="luces")
-	private boolean luces;
+	@Column(name="lucesYcortinas")
+	private boolean lucesYcortinas;
 	
 	@OneToOne
 	@JoinColumn(name="camaraAula")
 	private CamaraAula camara;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="edificio", nullable=false)
-	private Lugar edificio;
- 
 
-	public Aula(boolean cortinas, boolean luces, CamaraAula camara, Lugar edificio) {
+	
+	public Aula() {
 		super();
-		this.cortinas = cortinas;
-		this.luces = luces;
-		this.camara = camara;
-		this.edificio = edificio;
 	}
 
-	public Aula(int idAula, boolean cortinas, boolean luces, CamaraAula camara, Lugar edificio) {
+	public Aula(int idAula, String lugar, boolean lucesYcortinas, CamaraAula camara) {
 		super();
 		this.idAula = idAula;
-		this.cortinas = cortinas;
-		this.luces = luces;
+		this.lugar = lugar;
+		this.lucesYcortinas = lucesYcortinas;
 		this.camara = camara;
-		this.edificio = edificio;
 	}
 
-	public Aula(int idAula, CamaraAula camara, Lugar edificio) {
-		super();
-		this.idAula = idAula;
-		this.camara = camara;
-		this.edificio = edificio;
+	public int getIdAula() {
+		return idAula;
 	}
-	
-	
+
+	public void setIdAula(int idAula) {
+		this.idAula = idAula;
+	}
+
+	public String getLugar() {
+		return lugar;
+	}
+
+	public void setLugar(String lugar) {
+		this.lugar = lugar;
+	}
+
+	public boolean isLucesYcortinas() {
+		return lucesYcortinas;
+	}
+
+	public void setLucesYcortinas(boolean lucesYcortinas) {
+		this.lucesYcortinas = lucesYcortinas;
+	}
+
+	public CamaraAula getCamara() {
+		return camara;
+	}
+
+	public void setCamara(CamaraAula camara) {
+		this.camara = camara;
+	}
 	
 }

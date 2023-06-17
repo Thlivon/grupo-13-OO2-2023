@@ -24,19 +24,18 @@ public class Contenedor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idContenedor;
 	
+	@Column(name="lugar")
+	private String lugar;
+	
 	@OneToOne
-	@JoinColumn(name="sensor")
+	@JoinColumn(name="sensorContenedor")
 	private SensorContenedor sensor;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="lugar", nullable=false)
-	private Lugar lugar;
-	
-	public Contenedor(int idContenedor, SensorContenedor sensor, Lugar lugar) {
+
+	public Contenedor(int idContenedor, String lugar, SensorContenedor sensor) {
 		super();
-		this.idContenedor= idContenedor;
-		this.sensor = sensor;
+		this.idContenedor = idContenedor;
 		this.lugar = lugar;
+		this.sensor = sensor;
 	}
 	
 	

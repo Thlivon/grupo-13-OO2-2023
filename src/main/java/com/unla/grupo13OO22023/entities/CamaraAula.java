@@ -35,6 +35,25 @@ public class CamaraAula extends Dispositivo {
 		this.hayAlguien = hayAlguien;
 		this.aula = aula;
 	}
+
+	public boolean isHayAlguien() {
+		return hayAlguien;
+	}
+
+	public void setHayAlguien(boolean hayAlguien) {
+		this.hayAlguien = hayAlguien;
+	}
+
+	public Aula getAula() {
+		return aula;
+	}
+
+	public void setAula(Aula aula) {
+		this.aula = aula;
+	}
+
+	
+	
 	
 
 }

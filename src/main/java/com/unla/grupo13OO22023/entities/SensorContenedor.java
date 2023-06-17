@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
-@Table(name="SensorContenedor")
+@Table(name="sensorContenedor")
 public class SensorContenedor extends Dispositivo {
 	
 	@Column(name="estaLleno")
