@@ -1,8 +1,8 @@
 <form action="#" th:action="@{/camara/create}" th:object="${camaraAula}" method="post">
-	
-	<select>
-        <option th:each="aula : ${aulas}" th:text="${aula.lugar}"></option>
+    <select name="aulaLugar">
+        <option th:each="aula : ${aulas}" th:value="${aula.lugar}" th:text="${aula.lugar}"></option>
     </select>
-	<input type="submit" value="crear"/>
-</form> 
+    <input type="submit" value="Crear" />
+</form>
+
 
