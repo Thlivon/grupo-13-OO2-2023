@@ -13,14 +13,13 @@ import com.unla.grupo13OO22023.repositories.IDispositivoRepository;
 import com.unla.grupo13OO22023.services.IDispositivoService;
 
 @Service("dispositivoService")
-public class DispositivoService implements IDispositivoService{
+public class DispositivoService implements IDispositivoService {
 	@Autowired
 	@Qualifier("dispositivoRepository")
 	private IDispositivoRepository dispositivoRepository;
 
-
 	@Override
-	public List<Dispositivo> getAll(){
+	public List<Dispositivo> getAll() {
 		return dispositivoRepository.findAll();
 	}
 
@@ -28,7 +27,6 @@ public class DispositivoService implements IDispositivoService{
 	public Dispositivo findByIdDispositivo(int idDispositivo) {
 		return dispositivoRepository.findByIdDispositivo(idDispositivo);
 	}
-
 
 	@Override
 	public Dispositivo insertOrUpdate(Dispositivo d) {
@@ -38,10 +36,19 @@ public class DispositivoService implements IDispositivoService{
 
 	@Override
 	public boolean remove(int id) {
+		// Funcion para establecer null a la dependencia (necesario para borrar en la bd)
+		if (findByIdDispositivo(id) instanceof CamaraAula) {
+			CamaraAula aux = (CamaraAula) findByIdDispositivo(id);
+			aux.getAula().setCamara(null);
+		}
+		if (findByIdDispositivo(id) instanceof SensorContenedor) {
+			SensorContenedor aux = (SensorContenedor) findByIdDispositivo(id);
+			aux.getContenedor().setSensor(null);
+		}
 		try {
 			dispositivoRepository.deleteById(id);
 			return true;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return false;
 		}
 	}
@@ -50,6 +57,7 @@ public class DispositivoService implements IDispositivoService{
 	public List<CamaraAula> getAllCamaras() {
 		return dispositivoRepository.getAllCamaras();
 	}
+
 	@Override
 	public List<SensorContenedor> getAllSensoresContenedor() {
 		return dispositivoRepository.getAllSensoresContenedor();

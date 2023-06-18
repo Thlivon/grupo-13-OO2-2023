@@ -83,5 +83,5 @@ public class Aula {
 	public void setCamara(CamaraAula camara) {
 		this.camara = camara;
 	}
-	
+
 }

@@ -52,8 +52,4 @@ public class CamaraAula extends Dispositivo {
 		this.aula = aula;
 	}
 
-	
-	
-	
-
 }

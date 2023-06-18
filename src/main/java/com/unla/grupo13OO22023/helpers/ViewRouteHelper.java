@@ -18,4 +18,11 @@ public class ViewRouteHelper {
 	//REDIRECT	ESTO ES LA URL
 	public final static String SENSORCONTENEDOR_ROOT = "/sensorcontenedor";
 	
+	//---GRUPO--
+	//DISPOSITIVO
+	public final static String DISPOSITIVO_LISTA = "dispositivo/Lista";
+	public final static String DISPOSITIVO_UPDATE= "dispositivo/Update";
+	//REDIRECT
+	public final static String DISPOSITIVO_ROOT="/dispositivo";
+	
 }

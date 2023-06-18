@@ -81,8 +81,6 @@ public class CamaraController {
 
 	@PostMapping("/delete/{idDispositivo}")
 	public RedirectView delete(@PathVariable("idDispositivo") int idDispositivo) {
-		CamaraAula camara= (CamaraAula)dispositivoService.findByIdDispositivo(idDispositivo);
-		camara.getAula().setCamara(null);
 		dispositivoService.remove(idDispositivo);
 		return new RedirectView(ViewRouteHelper.CAMARA_ROOT);
 	}
