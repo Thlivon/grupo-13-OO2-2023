@@ -11,7 +11,7 @@
     <h1>Creador de Cámara</h1>
     <form action="#" th:action="@{/camara/create}" th:object="${camara}" method="post">
       <div class="form-group">
-        <label for="aula">Aula:</label>
+        <label for="aula">Seleccione a donde asignar la cámara</label>
         <select id="aula" name="aula" class="form-control">
           <option th:each="aula : ${aulas}" th:value="${aula.idAula}" th:text="${aula.lugar} + (${aula.camara != null} ? ' - YA OCUPADA' : '')" th:disabled="${aula.camara != null}" th:classappend="${aula.camara != null} ? 'option-ocupada' : ''"></option>
         </select>
