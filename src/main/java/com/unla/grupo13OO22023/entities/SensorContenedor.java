@@ -29,6 +29,22 @@ public class SensorContenedor extends Dispositivo {
 		super(idDispositivo);
 		this.estaLleno = estaLleno;
 	}
+
+	public boolean isEstaLleno() {
+		return estaLleno;
+	}
+
+	public void setEstaLleno(boolean estaLleno) {
+		this.estaLleno = estaLleno;
+	}
+
+	public Contenedor getContenedor() {
+		return contenedor;
+	}
+
+	public void setContenedor(Contenedor contenedor) {
+		this.contenedor = contenedor;
+	}
 	
 	
 }

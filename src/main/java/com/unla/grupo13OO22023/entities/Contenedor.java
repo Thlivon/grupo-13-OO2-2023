@@ -31,10 +31,43 @@ public class Contenedor {
 	@JoinColumn(name="sensorContenedor")
 	private SensorContenedor sensor;
 
+	public Contenedor() {
+		super();
+	}
+
+	public Contenedor(String lugar) {
+		super();
+		this.lugar = lugar;
+	}
+
 	public Contenedor(int idContenedor, String lugar, SensorContenedor sensor) {
 		super();
 		this.idContenedor = idContenedor;
 		this.lugar = lugar;
+		this.sensor = sensor;
+	}
+
+	public int getIdContenedor() {
+		return idContenedor;
+	}
+
+	public void setIdContenedor(int idContenedor) {
+		this.idContenedor = idContenedor;
+	}
+
+	public String getLugar() {
+		return lugar;
+	}
+
+	public void setLugar(String lugar) {
+		this.lugar = lugar;
+	}
+
+	public SensorContenedor getSensor() {
+		return sensor;
+	}
+
+	public void setSensor(SensorContenedor sensor) {
 		this.sensor = sensor;
 	}
 	

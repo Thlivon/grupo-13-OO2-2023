@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.unla.grupo13OO22023.entities.Aula;
-import com.unla.grupo13OO22023.entities.Dispositivo;
 import com.unla.grupo13OO22023.repositories.IAulaRepository;
 import com.unla.grupo13OO22023.services.IAulaService;
 

@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Lista Sensores Contenedor</title>
+	<title>ListaSensoresContenedor</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
@@ -11,28 +11,27 @@
 <body>
 	<div class="container my-2" align="center">
 
-		<h3>Lista de Sensores Contenedor</h3>
+		<h3>Lista de Sensores de Contenedor</h3>
 		<!-- Cuando le dan click se referencia a otro controller por eso falla) -->
-		<a th:href="@{/sensorContenedor/New}" class="btn btn-primary btn-sm mb-3">Agregar Sensor Contenedor</a>
+		<a th:href="@{/sensorcontenedor/new}" class="btn btn-primary btn-sm mb-3">Agregar Sensor Contenedor</a>
 		<table style="width:80%" border="1" class="table table-striped table-responsive-md">
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>Esta Lleno</th>
 					<th>Contenedor</th>
+					<th>Esta Lleno</th>
 				</tr>
 			</thead>
 			<!-- Modificar referenciando a lo nuestro (todavia nose bien como se hace) -->
 			<tbody>
-				<tr th:each="SensorContenedor:${sensoresContenedor}">
-					<td th:text="${SensorContenedor.idDispositivo}"></td>
-					<td th:text="${SensorContenedor.estaLleno}"></td>
-					<td> <a th:href="@{/showFormForUpdate/{id}(id=${SensorContenedor.idDispositivo})}"
-							class="btn btn-primary">Update</a>
-						<a th:href="@{/deleteSensorContenedor/{id}(id=${SensorContenedor.idDispositivo})}"
-							class="btn btn-danger">Delete</a>
-
-					</td>
+				<tr th:each="sensorContenedor : ${sensoresContenedor}">
+					<td th:text="${sensorContenedor.idDispositivo}">Id</td>
+					<td th:text="${sensorContenedor.contenedor.lugar}">Contenedor</td>
+					<td th:text="${sensorContenedor.estaLleno}">Esta Lleno</td>
+					<td>
+						<a th:href="@{/sensorcontenedor/{idDispositivo}(idDispositivo=${sensorContenedor.idDispositivo})}">
+							Ver detalles
+						</a>
 				</tr>
 			</tbody>
 		</table>

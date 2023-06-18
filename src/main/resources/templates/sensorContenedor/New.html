@@ -1,5 +1,6 @@
-<form action="#" th:action="@{/dispositivo/create}" th:object="${dispositivo}" method="post">
-	<!--<p>Activado: <input type="boolean" th:field="*{activado}" /></p>-->
-	<!--<p>Alta logica: <input type="boolean" th:field="*{altaLogica}" /></p>-->
-	<input type="submit" value="crear"/>
+<form action="#" th:action="@{/sensorcontenedor/create}" th:object="${sensorContenedor}" method="post">
+    <select name="contenedor">
+        <option th:each="contenedor : ${contenedores}" th:value="${contenedor.idContenedor}" th:text="${contenedor.lugar}"></option>
+    </select>
+    <input type="submit" value="Crear" />
 </form>

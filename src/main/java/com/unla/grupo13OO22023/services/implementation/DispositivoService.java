@@ -52,7 +52,6 @@ public class DispositivoService implements IDispositivoService{
 	}
 	@Override
 	public List<SensorContenedor> getAllSensoresContenedor() {
-		// TODO Auto-generated method stub
-		return null;
+		return dispositivoRepository.getAllSensoresContenedor();
 	}
 }

@@ -1,4 +1,4 @@
-package com.unla.grupo13OO22023.aulas;
+package com.unla.grupo13OO22023.cargas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
