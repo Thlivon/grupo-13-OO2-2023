@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
       <div class="form-group">
         <label for="aula">Aula:</label>
         <select id="aula" name="aula" class="form-control">
-          <option th:each="aula : ${aulas}" th:value="${aula.idAula}" th:text="${aula.lugar}"></option>
+          <option th:each="aula : ${aulas}" th:value="${aula.idAula}" th:text="${aula.lugar} + (${aula.camara != null} ? ' - YA OCUPADA' : '')" th:disabled="${aula.camara != null}" th:classappend="${aula.camara != null} ? 'option-ocupada' : ''"></option>
         </select>
       </div>
       <div class="btn-group">
@@ -28,3 +28,11 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
