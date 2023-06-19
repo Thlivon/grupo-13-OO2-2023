@@ -28,6 +28,24 @@ public class SensorHumedad extends Dispositivo{
 		this.espacioVerde = espacioVerde;
 	}
 
+	public SensorHumedad() {}
+
+	public boolean isTempBaja() {
+		return tempBaja;
+	}
+
+	public void setTempBaja(boolean tempBaja) {
+		this.tempBaja = tempBaja;
+	}
+
+	public EspacioVerde getEspacioVerde() {
+		return espacioVerde;
+	}
+
+	public void setEspacioVerde(EspacioVerde espacioVerde) {
+		this.espacioVerde = espacioVerde;
+	}
+
 	
 	
 	

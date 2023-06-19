@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.unla.grupo13OO22023.entities.CamaraAula;
 import com.unla.grupo13OO22023.entities.Dispositivo;
 import com.unla.grupo13OO22023.entities.SensorContenedor;
+import com.unla.grupo13OO22023.entities.SensorHumedad;
 import com.unla.grupo13OO22023.repositories.IDispositivoRepository;
 import com.unla.grupo13OO22023.services.IDispositivoService;
 
@@ -45,6 +46,10 @@ public class DispositivoService implements IDispositivoService {
 			SensorContenedor aux = (SensorContenedor) findByIdDispositivo(id);
 			aux.getContenedor().setSensor(null);
 		}
+		if (findByIdDispositivo(id) instanceof SensorHumedad) {
+			SensorHumedad aux = (SensorHumedad) findByIdDispositivo(id);
+			aux.getEspacioVerde().setSenHumedad(null);
+		}
 		try {
 			dispositivoRepository.deleteById(id);
 			return true;
@@ -61,5 +66,10 @@ public class DispositivoService implements IDispositivoService {
 	@Override
 	public List<SensorContenedor> getAllSensoresContenedor() {
 		return dispositivoRepository.getAllSensoresContenedor();
+	}
+	
+	@Override
+	public List<SensorHumedad> getAllSensoresHumedad() {
+		return dispositivoRepository.getAllSensoresHumedad();
 	}
 }

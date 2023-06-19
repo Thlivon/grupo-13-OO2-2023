@@ -24,11 +24,10 @@ public class EspacioVerde{
 	
 	@Column(name="lugar")
 	private String lugar;
+	
 	@OneToOne
 	@JoinColumn(name="sensorHumedad")
 	private SensorHumedad senHumedad;
-	
-	
 	
 	public EspacioVerde(int idEspacioVerde, String lugar, SensorHumedad senHumedad) {
 		super();
@@ -36,6 +35,39 @@ public class EspacioVerde{
 		this.lugar = lugar;
 		this.senHumedad = senHumedad;
 	}
+	
+	public EspacioVerde(String lugar) {
+		super();
+		this.lugar = lugar;
+	}
+
+	public EspacioVerde() {}
+
+	public int getIdEspacioVerde() {
+		return idEspacioVerde;
+	}
+
+	public void setIdEspacioVerde(int idEspacioVerde) {
+		this.idEspacioVerde = idEspacioVerde;
+	}
+
+	public String getLugar() {
+		return lugar;
+	}
+
+	public void setLugar(String lugar) {
+		this.lugar = lugar;
+	}
+
+	public SensorHumedad getSenHumedad() {
+		return senHumedad;
+	}
+
+	public void setSenHumedad(SensorHumedad senHumedad) {
+		this.senHumedad = senHumedad;
+	}
+	
+	
 	
 	
 }

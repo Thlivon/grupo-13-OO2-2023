@@ -10,7 +10,9 @@ import org.springframework.stereotype.Repository;
 
 import com.unla.grupo13OO22023.entities.Dispositivo;
 import com.unla.grupo13OO22023.entities.SensorContenedor;
+import com.unla.grupo13OO22023.entities.SensorHumedad;
 import com.unla.grupo13OO22023.entities.CamaraAula;
+
 @Repository("dispositivoRepository")
 public interface IDispositivoRepository extends JpaRepository<Dispositivo, Serializable> {
 	public Dispositivo findByIdDispositivo(int idDispositivo);
@@ -20,4 +22,7 @@ public interface IDispositivoRepository extends JpaRepository<Dispositivo, Seria
 
 	@Query("SELECT s FROM SensorContenedor s")
 	public List<SensorContenedor> getAllSensoresContenedor();
+	
+	@Query("SELECT s FROM SensorHumedad s")
+	public List<SensorHumedad> getAllSensoresHumedad();
 }

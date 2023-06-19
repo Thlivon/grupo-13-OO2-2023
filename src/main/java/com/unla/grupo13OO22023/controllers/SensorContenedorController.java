@@ -37,7 +37,7 @@ public class SensorContenedorController {
 	
 	@GetMapping("")
 	public ModelAndView lista() {
-		ModelAndView mAV= new ModelAndView(ViewRouteHelper.SENSORCONTENEDOR_LISTA);
+		ModelAndView mAV= new ModelAndView(ViewRouteHelper.SENSORCONTENEDOR_LISTA); 
 		mAV.addObject("sensoresContenedor", dispositivoService.getAllSensoresContenedor());
 		return mAV;
 	}

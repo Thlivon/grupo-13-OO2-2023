@@ -18,6 +18,15 @@ public class ViewRouteHelper {
 	//REDIRECT	ESTO ES LA URL
 	public final static String SENSORCONTENEDOR_ROOT = "/sensorcontenedor";
 	
+	//---THOMAS---
+	//SENSOR HUMEDAD
+	public final static String SENSORHUMEDAD_LISTA = "sensorhumedad/Lista";
+	public final static String SENSORHUMEDAD_NEW = "sensorhumedad/New";
+	public final static String SENSORHUMEDAD_UPDATE = "sensorhumedad/Update";	
+	//REDIRECT	ESTO ES LA URL
+	public final static String SENSORHUMEDAD_ROOT = "/sensorhumedad";
+	
+	
 	//---GRUPO--
 	//DISPOSITIVO
 	public final static String DISPOSITIVO_LISTA = "dispositivo/Lista";

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Sensor Humedad</title>
+</head>
+<body>
+    <h1>Update Sensor Humedad</h1>
+
+    <form action="#" th:action="@{/sensorhumedad/update}" th:object="${sensorHumedad}" method="post">
+        <input type="hidden" th:field="*{idDispositivo}" />
+        <p>
+            <!-- Otros campos del formulario -->
+        </p>
+        <input type="submit" value="Update" />
+    </form>
+
+    <form action="#" th:action="@{/sensorhumedad/delete/{idDispositivo}(idDispositivo=${sensorHumedad.idDispositivo})}" method="post">
+        <input type="submit" value="Delete" />
+    </form>
+</body>
+</html>

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import com.unla.grupo13OO22023.entities.CamaraAula;
 import com.unla.grupo13OO22023.entities.Dispositivo;
 import com.unla.grupo13OO22023.entities.SensorContenedor;
+import com.unla.grupo13OO22023.entities.SensorHumedad;
 
 
 public interface IDispositivoService {
@@ -20,4 +21,7 @@ public interface IDispositivoService {
 	
 	@ModelAttribute("sensoresContenedor")
 	public List<SensorContenedor> getAllSensoresContenedor();
+	
+	@ModelAttribute("sensoresHumedad")
+	public List<SensorHumedad> getAllSensoresHumedad();
 }
