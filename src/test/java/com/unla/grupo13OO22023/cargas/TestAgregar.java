@@ -1,5 +1,6 @@
 package com.unla.grupo13OO22023.cargas;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -22,6 +23,7 @@ public class TestAgregar {
 	@Autowired
 	private IEspacioVerdeRepository espacioVerdeRepository;
 	
+	@Test
 	public void testAgregar() {
 		// Agrega las aulas a la base de datos
 		aulaRepository.save(new Aula("Aula roja"));
