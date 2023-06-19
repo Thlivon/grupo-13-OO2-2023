@@ -5,6 +5,14 @@
     <title>Update Dispositivo</title>
 </head>
 <body>
+	<!-- No puedo hacer que el navbar sea blanco nose porque (por ahora se queda asi)-->
+	<nav class="navbar navbar-nav ">
+		<div class="container">
+			<a class="navbar-brand" href="/inicio">Inicio</a>
+		</div>
+	</nav>
+	
+	
     <h1>Update Dispositivo</h1>
 
     <form action="#" th:action="@{/dispositivo/update}" th:object="${dispositivo}" method="post">

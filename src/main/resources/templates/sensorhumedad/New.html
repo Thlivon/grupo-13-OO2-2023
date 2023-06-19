@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <title>Creador de Sensor Humedad</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<title>Creador de Sensor Humedad</title>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Creador de Sensor Humedad</h1>
-    <form action="#" th:action="@{/sensorhumedad/create}" th:object="${sensorHumedad}" method="post">
-      <div class="form-group">
-        <label for="espacioVerde">Seleccione a donde asignar el sensor</label>
-        <select id="espacioVerde" name="espacioVerde" class="form-control">															//ACA VA EL NOMBRE DE LA CLASE JAVA NO DE LA COLUMNA BASE DE DATOS POR ESO PUSE SENSOR Y NO SENSORCONTENEDOR
-          <option th:each="espacioVerde : ${espaciosVerdes}" th:value="${espacioVerde.idEspacioVerde}" th:text="${espacioVerde.lugar} + (${espacioVerde.senHumedad != null} ? ' - YA OCUPADO' : '')" th:disabled="${espacioVerde.senHumedad != null}" th:classappend="${espacioVerde.senHumedad != null} ? 'option-ocupado' : ''"></option>
-        </select>
-      </div>
-      <div class="btn-group">
-        <button type="submit" class="btn btn-primary">Crear</button>
-        <a href="/sensorhumedad" class="btn btn-secondary">Cancelar</a>
-      </div>
-    </form>
-  </div>
-  
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<!-- No puedo hacer que el navbar sea blanco nose porque (por ahora se queda asi)-->
+	<nav class="navbar navbar-nav ">
+		<div class="container">
+			<a class="navbar-brand" href="/inicio">Inicio</a>
+		</div>
+	</nav>
+
+
+	<div class="container">
+		<h1>Creador de Sensor Humedad</h1>
+		<form action="#" th:action="@{/sensorhumedad/create}" th:object="${sensorHumedad}" method="post">
+			<div class="form-group">
+				<label for="espacioVerde">Seleccione a donde asignar el sensor</label>
+				<select id="espacioVerde" name="espacioVerde" class="form-control"> //ACA VA EL NOMBRE DE LA CLASE JAVA
+					NO DE LA COLUMNA BASE DE DATOS POR ESO PUSE SENSOR Y NO SENSORCONTENEDOR
+					<option th:each="espacioVerde : ${espaciosVerdes}" th:value="${espacioVerde.idEspacioVerde}"
+						th:text="${espacioVerde.lugar} + (${espacioVerde.senHumedad != null} ? ' - YA OCUPADO' : '')"
+						th:disabled="${espacioVerde.senHumedad != null}"
+						th:classappend="${espacioVerde.senHumedad != null} ? 'option-ocupado' : ''"></option>
+				</select>
+			</div>
+			<div class="btn-group">
+				<button type="submit" class="btn btn-primary">Crear</button>
+				<a href="/sensorhumedad" class="btn btn-secondary">Cancelar</a>
+			</div>
+		</form>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-

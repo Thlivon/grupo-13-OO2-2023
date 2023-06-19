@@ -31,7 +31,16 @@ public class ViewRouteHelper {
 	//DISPOSITIVO
 	public final static String DISPOSITIVO_LISTA = "dispositivo/Lista";
 	public final static String DISPOSITIVO_UPDATE= "dispositivo/Update";
+	
+	//ESTRUCTURA
+	public final static String ESTRUCTURA_INICIO="/estructura/inicio";
+	public final static String ESTRUCTURA_INICIARSESION="/estructura/iniciarsesion";
+	public final static String ESTRUCTURA_REGISTRARSE="/estructura/registrarse";
+	
 	//REDIRECT
 	public final static String DISPOSITIVO_ROOT="/dispositivo";
+	
+
+	
 	
 }

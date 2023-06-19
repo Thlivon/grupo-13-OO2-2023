@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Update Sensor Contenedor</title>
+	<meta charset="UTF-8">
+	<title>Update Sensor Contenedor</title>
 </head>
+
 <body>
-    <h1>Update Sensor Contenedor</h1>
+	<!-- No puedo hacer que el navbar sea blanco nose porque (por ahora se queda asi)-->
+	<nav class="navbar navbar-nav ">
+		<div class="container">
+			<a class="navbar-brand" href="/inicio">Inicio</a>
+		</div>
+	</nav>
 
-    <form action="#" th:action="@{/sensorcontenedor/update}" th:object="${sensorContenedor}" method="post">
-        <input type="hidden" th:field="*{idDispositivo}" />
-        <p>
-            <!-- Otros campos del formulario -->
-        </p>
-        <input type="submit" value="Update" />
-    </form>
 
-    <form action="#" th:action="@{/sensorcontenedor/delete/{idDispositivo}(idDispositivo=${sensorContenedor.idDispositivo})}" method="post">
-        <input type="submit" value="Delete" />
-    </form>
+	<h1>Update Sensor Contenedor</h1>
+
+	<form action="#" th:action="@{/sensorcontenedor/update}" th:object="${sensorContenedor}" method="post">
+		<input type="hidden" th:field="*{idDispositivo}" />
+		<p>
+			<!-- Otros campos del formulario -->
+		</p>
+		<input type="submit" value="Update" />
+	</form>
+
+	<form action="#"
+		th:action="@{/sensorcontenedor/delete/{idDispositivo}(idDispositivo=${sensorContenedor.idDispositivo})}"
+		method="post">
+		<input type="submit" value="Delete" />
+	</form>
 </body>
+
 </html>
