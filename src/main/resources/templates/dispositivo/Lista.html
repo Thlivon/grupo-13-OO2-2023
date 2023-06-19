@@ -33,9 +33,11 @@
 					<td>Camaras</td>
 					<td th:text="${habilitacionCamara.habilitado}">Habilitado</td>
 					<td>
-						<a class="btn btn-info btn-sm" href="">
-							Activar
-						</a>
+						<form
+							th:action="@{/dispositivo/cambiarhabilitacion/{idHabilitacion}(idHabilitacion=${habilitacionCamara.idHabilitacion})}"
+							method="post">
+							<button type="submit" class="btn btn-info btn-sm">Activar</button>
+						</form>
 					</td>
 					<td>
 						<a th:href="@{camara}">
@@ -48,9 +50,11 @@
 					<td>Sensores Contenedor</td>
 					<td th:text="${habilitacionContenedor.habilitado}">Habilitado</td>
 					<td>
-						<a class="btn btn-info btn-sm" href="">
-							Activar
-						</a>
+						<form
+							th:action="@{/dispositivo/cambiarhabilitacion/{idHabilitacion}(idHabilitacion=${habilitacionContenedor.idHabilitacion})}"
+							method="post">
+							<button type="submit" class="btn btn-info btn-sm">Activar</button>
+						</form>
 					</td>
 					<td>
 						<a th:href="@{sensorcontenedor}">
@@ -63,9 +67,11 @@
 					<td>Sensores Humedad</td>
 					<td th:text="${habilitacionHumedad.habilitado}">Habilitado</td>
 					<td>
-						<a class="btn btn-info btn-sm" href="">
-							Activar
-						</a>
+						<form
+							th:action="@{/dispositivo/cambiarhabilitacion/{idHabilitacion}(idHabilitacion=${habilitacionHumedad.idHabilitacion})}"
+							method="post">
+							<button type="submit" class="btn btn-info btn-sm">Activar</button>
+						</form>
 					</td>
 					<td>
 						<a th:href="@{sensorhumedad}">

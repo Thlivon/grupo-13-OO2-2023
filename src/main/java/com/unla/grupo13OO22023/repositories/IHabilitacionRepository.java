@@ -11,16 +11,17 @@ import org.springframework.stereotype.Repository;
 
 import com.unla.grupo13OO22023.entities.Habilitacion;
 
+import jakarta.transaction.Transactional;
+
 @Repository("habilitacionRepository")
 public interface IHabilitacionRepository extends JpaRepository<Habilitacion, Serializable>{
 	public Habilitacion findByIdHabilitacion(int idHabilitacion);
 	public Habilitacion findByNombre(String nombre);
 	
-//	public Habilitacion cambiarHabilitacion(int idHabilitacion);
-	
 	@Modifying
-    @Query("UPDATE Habilitacion h SET h.habilitado = :habilitado WHERE h.idHabilitacion = :idHabilitacion")
-    public void cambiarHabilitacion(@Param("idHabilitacion") int idHabilitacion, @Param("habilitado") boolean habilitado);
+	@Transactional
+	@Query("UPDATE Habilitacion h SET h.habilitado = :habilitado WHERE h.idHabilitacion = :idHabilitacion")
+	public void cambiarHabilitacion(@Param("idHabilitacion") int idHabilitacion, @Param("habilitado") boolean habilitado);
 	
 	@Query("SELECT h FROM Habilitacion h")
 	public List<Habilitacion> getAllHabilitaciones();

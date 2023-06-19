@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/smartcity_unla
+    url: jdbc:mysql://127.0.0.1:3306/smartcity_unla
     username: root
-    password: homer
+    password: coparecopa123
   jpa:
     show-sql: true
     hibernate:
