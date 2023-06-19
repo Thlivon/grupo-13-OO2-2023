@@ -2,12 +2,15 @@ package com.unla.grupo13OO22023.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -23,10 +26,13 @@ public class Dispositivo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDispositivo;
-	@Column(name="altaLogica")
-	private boolean altaLogica;
+	
 	@Column(name="activado")
 	private boolean activado;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="habilitado", nullable=false)
+	private Habilitacion habilitado;
 	
 	
 	//Si no lo agregaba el /new me tiraba error
@@ -34,50 +40,44 @@ public class Dispositivo {
 		super();
 	}
 
-	public Dispositivo(int idDispositivo) {
-		super();
-		this.idDispositivo = idDispositivo;
-	}
 
-	public Dispositivo(int idDispositivo, boolean altaLogicaYActivadoEmpiezanEn) {
+	public Dispositivo(int idDispositivo, boolean activado, Habilitacion habilitado) {
 		super();
 		this.idDispositivo = idDispositivo;
-		this.altaLogica = altaLogicaYActivadoEmpiezanEn;
-		this.activado = altaLogicaYActivadoEmpiezanEn;
-	}
-
-	public Dispositivo(int idDispositivo, boolean altaLogica, boolean activado) {
-		super();
-		this.idDispositivo = idDispositivo;
-		this.altaLogica = altaLogica;
 		this.activado = activado;
+		this.habilitado = habilitado;
 	}
+
 
 	public int getIdDispositivo() {
 		return idDispositivo;
 	}
 
+
 	public void setIdDispositivo(int idDispositivo) {
 		this.idDispositivo = idDispositivo;
 	}
 
-	public boolean isAltaLogica() {
-		return altaLogica;
-	}
-
-	public void setAltaLogica(boolean altaLogica) {
-		this.altaLogica = altaLogica;
-	}
 
 	public boolean isActivado() {
 		return activado;
 	}
 
+
 	public void setActivado(boolean activado) {
 		this.activado = activado;
 	}
+
+
+	public Habilitacion getHabilitado() {
+		return habilitado;
+	}
+
+
+	public void setHabilitado(Habilitacion habilitado) {
+		this.habilitado = habilitado;
+	}
+
 	
-	
-	
-	
+
 }

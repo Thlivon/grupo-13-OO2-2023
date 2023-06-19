@@ -18,9 +18,11 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.grupo13OO22023.entities.Aula;
 import com.unla.grupo13OO22023.entities.CamaraAula;
+import com.unla.grupo13OO22023.entities.Habilitacion;
 import com.unla.grupo13OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo13OO22023.services.IAulaService;
 import com.unla.grupo13OO22023.services.IDispositivoService;
+import com.unla.grupo13OO22023.services.IHabilitacionService;
 
 @Controller
 @RequestMapping("/camara")
@@ -33,11 +35,16 @@ public class CamaraController {
 	@Qualifier("aulaService")
 	private IAulaService aulaService;
 
-	private ModelMapper modelMapper = new ModelMapper();
+	@Autowired
+	@Qualifier("habilitacionService")
+	private IHabilitacionService habilitacionService;
+
+//	private ModelMapper modelMapper = new ModelMapper();
 
 	@GetMapping("")
 	public ModelAndView lista() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAMARA_LISTA);
+		mAV.addObject("habilitacion", habilitacionService.findByNombre("Habilitacion Camaras"));
 		mAV.addObject("camaras", dispositivoService.getAllCamaras());
 		return mAV;
 	}
@@ -53,11 +60,11 @@ public class CamaraController {
 
 	@PostMapping("/create")
 	public RedirectView crear(@ModelAttribute("camara") CamaraAula camara, ModelMap model) {
-//	    CamaraAula camaraAula = new CamaraAula();
-//	    modelMapper.map(camara, camaraAula);
 	    Aula aula = aulaService.findByIdAula(camara.getAula().getIdAula());
-//	    camaraAula.setAula(aula);
+	    Habilitacion habilitacion = habilitacionService.findByNombre("Habilitacion Camaras");
 	    aula.setCamara(camara);
+	    habilitacion.getDispositivos().add(camara);
+	    camara.setHabilitado(habilitacion);
 	    dispositivoService.insertOrUpdate(camara);
 	    aulaService.insertOrUpdate(aula);
 	    model.addAttribute("aulas", aulaService.getAll());

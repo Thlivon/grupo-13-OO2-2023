@@ -14,9 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.grupo13OO22023.entities.EspacioVerde;
+import com.unla.grupo13OO22023.entities.Habilitacion;
 import com.unla.grupo13OO22023.entities.SensorHumedad;
 import com.unla.grupo13OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo13OO22023.services.IEspacioVerdeService;
+import com.unla.grupo13OO22023.services.IHabilitacionService;
 import com.unla.grupo13OO22023.services.IDispositivoService;
 
 @Controller
@@ -30,11 +32,14 @@ public class SensorHumedadController {
 	@Qualifier("espacioVerdeService")
 	private IEspacioVerdeService espacioVerdeService;
 	
-	private ModelMapper modelMapper = new ModelMapper();
+	@Autowired
+	@Qualifier("habilitacionService")
+	private IHabilitacionService habilitacionService;
 	
 	@GetMapping("")
 	public ModelAndView lista() {
 		ModelAndView mAV= new ModelAndView(ViewRouteHelper.SENSORHUMEDAD_LISTA); 
+		mAV.addObject("habilitacion", habilitacionService.findByNombre("Habilitacion Sensores Humedad"));
 		mAV.addObject("sensoresHumedad", dispositivoService.getAllSensoresHumedad());
 		return mAV;
 	}
@@ -50,7 +55,10 @@ public class SensorHumedadController {
 	@PostMapping("/create")
 	public RedirectView crear(@ModelAttribute("sensorHumedad") SensorHumedad sensorHumedad, ModelMap model) {
 		EspacioVerde espacioVerde = espacioVerdeService.findByIdEspacioVerde(sensorHumedad.getEspacioVerde().getIdEspacioVerde());
+		Habilitacion habilitacion = habilitacionService.findByNombre("Habilitacion Sensores Humedad");
 		espacioVerde.setSenHumedad(sensorHumedad);
+		habilitacion.getDispositivos().add(sensorHumedad);
+		sensorHumedad.setHabilitado(habilitacion);
 	    dispositivoService.insertOrUpdate(sensorHumedad);
 	    espacioVerdeService.insertOrUpdate(espacioVerde);
 	    model.addAttribute("espacioVerdes", espacioVerdeService.getAll());

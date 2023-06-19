@@ -7,9 +7,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.unla.grupo13OO22023.entities.Aula;
 import com.unla.grupo13OO22023.entities.Contenedor;
 import com.unla.grupo13OO22023.entities.EspacioVerde;
+import com.unla.grupo13OO22023.entities.Habilitacion;
 import com.unla.grupo13OO22023.repositories.IAulaRepository;
 import com.unla.grupo13OO22023.repositories.IContenedorRepository;
 import com.unla.grupo13OO22023.repositories.IEspacioVerdeRepository;
+import com.unla.grupo13OO22023.repositories.IHabilitacionRepository;
 
 @SpringBootTest
 public class TestAgregar {
@@ -22,6 +24,9 @@ public class TestAgregar {
 	
 	@Autowired
 	private IEspacioVerdeRepository espacioVerdeRepository;
+	
+	@Autowired
+	private IHabilitacionRepository habilitacionRepository;
 	
 	@Test
 	public void testAgregar() {
@@ -42,5 +47,11 @@ public class TestAgregar {
 		espacioVerdeRepository.save(new EspacioVerde("Espacio Verde Sector B"));
 		espacioVerdeRepository.save(new EspacioVerde("Espacio Verde Sector C"));
 		espacioVerdeRepository.save(new EspacioVerde("Espacio Verde Sector D"));
+		
+		//Agrega los 3 tipos de dispositivo (Habilitar)
+		habilitacionRepository.save(new Habilitacion("Habilitacion Camaras"));
+		habilitacionRepository.save(new Habilitacion("Habilitacion Sensores Contenedor"));
+		habilitacionRepository.save(new Habilitacion("Habilitacion Sensores Humedad"));
+		
 	}	
 }

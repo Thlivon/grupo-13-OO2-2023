@@ -16,11 +16,13 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.unla.grupo13OO22023.entities.Aula;
 import com.unla.grupo13OO22023.entities.CamaraAula;
 import com.unla.grupo13OO22023.entities.Contenedor;
+import com.unla.grupo13OO22023.entities.Habilitacion;
 import com.unla.grupo13OO22023.entities.SensorContenedor;
 import com.unla.grupo13OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo13OO22023.services.IAulaService;
 import com.unla.grupo13OO22023.services.IContenedorService;
 import com.unla.grupo13OO22023.services.IDispositivoService;
+import com.unla.grupo13OO22023.services.IHabilitacionService;
 
 @Controller
 @RequestMapping("/sensorcontenedor")
@@ -33,11 +35,14 @@ public class SensorContenedorController {
 	@Qualifier("contenedorService")
 	private IContenedorService contenedorService;
 	
-	private ModelMapper modelMapper = new ModelMapper();
+	@Autowired
+	@Qualifier("habilitacionService")
+	private IHabilitacionService habilitacionService;
 	
 	@GetMapping("")
 	public ModelAndView lista() {
 		ModelAndView mAV= new ModelAndView(ViewRouteHelper.SENSORCONTENEDOR_LISTA); 
+		mAV.addObject("habilitacion", habilitacionService.findByNombre("Habilitacion Sensores Contenedor"));
 		mAV.addObject("sensoresContenedor", dispositivoService.getAllSensoresContenedor());
 		return mAV;
 	}
@@ -53,7 +58,10 @@ public class SensorContenedorController {
 	@PostMapping("/create")
 	public RedirectView crear(@ModelAttribute("sensorContenedor") SensorContenedor sensorContenedor, ModelMap model) {
 		Contenedor contenedor = contenedorService.findByIdContenedor(sensorContenedor.getContenedor().getIdContenedor());
+		Habilitacion habilitacion = habilitacionService.findByNombre("Habilitacion Sensores Contenedor");
 		contenedor.setSensor(sensorContenedor);
+		habilitacion.getDispositivos().add(sensorContenedor);
+		sensorContenedor.setHabilitado(habilitacion);
 	    dispositivoService.insertOrUpdate(sensorContenedor);
 	    contenedorService.insertOrUpdate(contenedor);
 	    model.addAttribute("contenedores", contenedorService.getAll());

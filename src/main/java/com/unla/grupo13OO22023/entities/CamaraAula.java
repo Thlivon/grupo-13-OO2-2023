@@ -25,13 +25,13 @@ public class CamaraAula extends Dispositivo {
 		super();
 	}
 
-	public CamaraAula(int idDispositivo, Aula aula) {
-		super(idDispositivo);
+	public CamaraAula(int idDispositivo, boolean activado, Habilitacion habilitado, Aula aula) {
+		super(idDispositivo, activado, habilitado);
 		this.aula = aula;
 	}
 
-	public CamaraAula(int idDispositivo, boolean altaLogicaYActivadoEmpiezanEn, boolean hayAlguien, Aula aula) {
-		super(idDispositivo, altaLogicaYActivadoEmpiezanEn);
+	public CamaraAula(int idDispositivo, boolean activado, Habilitacion habilitado, boolean hayAlguien, Aula aula) {
+		super(idDispositivo, activado, habilitado);
 		this.hayAlguien = hayAlguien;
 		this.aula = aula;
 	}

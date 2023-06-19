@@ -22,9 +22,15 @@ public class SensorHumedad extends Dispositivo{
 	@JoinColumn(name="espacioVerde")
 	private EspacioVerde espacioVerde;
 
-	public SensorHumedad(int idDispositivo, EspacioVerde espacioVerde) {
-		super(idDispositivo, false);
+	public SensorHumedad(int idDispositivo, boolean activado, Habilitacion habilitado, EspacioVerde espacioVerde) {
+		super(idDispositivo, activado, habilitado);
 		this.tempBaja = false;
+		this.espacioVerde = espacioVerde;
+	}
+
+	public SensorHumedad(int idDispositivo, boolean activado, Habilitacion habilitado, boolean tempBaja, EspacioVerde espacioVerde) {
+		super(idDispositivo, activado, habilitado);
+		this.tempBaja = tempBaja;
 		this.espacioVerde = espacioVerde;
 	}
 

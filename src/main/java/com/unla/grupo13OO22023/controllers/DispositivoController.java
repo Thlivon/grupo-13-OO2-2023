@@ -13,6 +13,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.grupo13OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo13OO22023.services.IDispositivoService;
+import com.unla.grupo13OO22023.services.IHabilitacionService;
 
 @Controller
 @RequestMapping("/dispositivo")
@@ -20,8 +21,12 @@ public class DispositivoController {
 	@Autowired
 	@Qualifier("dispositivoService")
 	private IDispositivoService dispositivoService;
+	
+	@Autowired
+	@Qualifier("habilitacionService")
+	private IHabilitacionService habilitacionService;
 
-	private ModelMapper modelMapper = new ModelMapper();
+//	private ModelMapper modelMapper = new ModelMapper();
 
 //	@GetMapping("lista")
 //	public String listaDisposotivos() {
@@ -37,6 +42,9 @@ public class DispositivoController {
 	public ModelAndView lista() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_LISTA);
 		mAV.addObject("dispositivos", dispositivoService.getAll());
+		mAV.addObject("habilitacionCamara", habilitacionService.findByNombre("Habilitacion Camaras"));
+		mAV.addObject("habilitacionContenedor", habilitacionService.findByNombre("Habilitacion Sensores Contenedor"));
+		mAV.addObject("habilitacionHumedad", habilitacionService.findByNombre("Habilitacion Sensores Humedad"));
 		return mAV;
 	}
 	// IMPLEMENTAR EL CREAR
