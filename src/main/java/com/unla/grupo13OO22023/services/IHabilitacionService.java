@@ -9,4 +9,5 @@ public interface IHabilitacionService {
 	public Habilitacion findByIdHabilitacion(int idHabilitacion);
 	public Habilitacion findByNombre(String nombre);
 	public Habilitacion insertOrUpdate(Habilitacion h);
+	public void cambiarHabilitacion(int idHabilitacion, boolean habilitado);
 }

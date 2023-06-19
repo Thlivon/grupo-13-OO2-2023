@@ -26,18 +26,6 @@ public class DispositivoController {
 	@Qualifier("habilitacionService")
 	private IHabilitacionService habilitacionService;
 
-//	private ModelMapper modelMapper = new ModelMapper();
-
-//	@GetMapping("lista")
-//	public String listaDisposotivos() {
-//		return "ListaDispositivos";
-//	}
-//	@GetMapping("/agregardispositivo")
-//    public String agregarDispositvo(/*Model model*/) {
-//        //Employee employee = new Employee(); //implementacion logica luego
-//        //model.addAttribute("employee", employee);
-//        return "AgregarDispositivo";
-//    }
 	@GetMapping("")
 	public ModelAndView lista() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_LISTA);
@@ -63,6 +51,14 @@ public class DispositivoController {
 //		return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
 //	}
 
+	@PostMapping("/cambiarhabilitacion/{idHabilitacion}")
+    public RedirectView cambiarHabilitacion(@PathVariable("idHabilitacion") int idHabilitacion) {
+		boolean aux = habilitacionService.findByIdHabilitacion(idHabilitacion).isHabilitado();
+		if(aux) habilitacionService.cambiarHabilitacion(idHabilitacion, false);
+		else habilitacionService.cambiarHabilitacion(idHabilitacion, true);
+        return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
+    }
+	
 	@PostMapping("/delete/{idDispositivo}")
 	public RedirectView delete(@PathVariable("idDispositivo") int idDispositivo) {
 		dispositivoService.remove(idDispositivo);
