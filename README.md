@@ -1,7 +1,7 @@
 ## Elección de solución IOT:
-- Homero Monsalvo: 'Luces Automáticas'
-- Lautaro Medina: 'Recolectores Inteligentes'
-- Livon Thomas: 'Cuidado del espacio verde inteligente'
+- Homero Monsalvo: `Luces Automáticas`
+- Lautaro Medina: `Recolectores Inteligentes`
+- Livon Thomas: `Cuidado del espacio verde inteligente`
 
 ## Indicaciones para la base de datos:
 
@@ -12,5 +12,5 @@
 
 ## Indicaciones para cargar la base de datos:
 
-- Correr el servidor localmente.
 - Ejecutar `TestAgregar`.
+- Correr el servidor localmente.
