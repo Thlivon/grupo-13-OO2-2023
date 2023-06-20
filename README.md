@@ -12,5 +12,5 @@
 
 ## Indicaciones para cargar la base de datos:
 
-- Ejecutar `TestAgregar`.
 - Correr el servidor localmente.
+- Ejecutar `TestAgregar`.
