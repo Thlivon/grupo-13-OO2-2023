@@ -2,6 +2,7 @@ package com.unla.grupo13OO22023.services;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.unla.grupo13OO22023.entities.CamaraAula;
@@ -25,5 +26,9 @@ public interface IDispositivoService {
 	@ModelAttribute("sensoresHumedad")
 	public List<SensorHumedad> getAllSensoresHumedad();
 	
+	public List<Dispositivo> getAllDispositivos(int idHabilitacion);
+	
 	public void cambiarActivado(int idActivado, boolean activado);
+	
+	public void cambiarActivadoSegunHabilitado(int idHabilitacion);
 }

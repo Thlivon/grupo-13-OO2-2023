@@ -31,8 +31,13 @@ public interface IDispositivoRepository extends JpaRepository<Dispositivo, Seria
 	@Query("SELECT s FROM SensorHumedad s")
 	public List<SensorHumedad> getAllSensoresHumedad();
 	
+	@Query("SELECT d FROM Dispositivo d INNER JOIN FETCH d.habilitado h WHERE h.idHabilitacion = :idHabilitacion")
+	public List<Dispositivo> getAllDispositivos(@Param("idHabilitacion")int idHabilitacion);
+	
 	@Modifying
 	@Transactional
 	@Query("UPDATE Dispositivo d SET d.activado = :activado WHERE d.idDispositivo = :idDispositivo")
 	public void cambiarActivado(@Param("idDispositivo") int idDispositivo, @Param("activado") boolean activado);
+
+//	public void cambiarActivadoSegunHabilitado(int idHabilitacion);
 }

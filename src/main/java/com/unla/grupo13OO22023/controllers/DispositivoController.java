@@ -50,14 +50,17 @@ public class DispositivoController {
 //		dispositivoService.insertOrUpdate(dispositivo);
 //		return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
 //	}
-
+	//CAMBIA A HABILITADO O DESHABILITADO UN >>>TIPO<<< DE DISPOSITIVO
 	@PostMapping("/cambiarhabilitacion/{idHabilitacion}")
     public RedirectView cambiarHabilitacion(@PathVariable("idHabilitacion") int idHabilitacion) {
-		boolean aux = habilitacionService.findByIdHabilitacion(idHabilitacion).isHabilitado();
-		habilitacionService.cambiarHabilitacion(idHabilitacion, !aux);
+		boolean aux = habilitacionService.findByIdHabilitacion(idHabilitacion).isHabilitado();//AGARRO EL BOOLEAN PARA SABER SI ESTÁ O NO HABILITADO EL TIPO
+		if (aux) {
+			dispositivoService.cambiarActivadoSegunHabilitado(idHabilitacion);	//ACA CAMBIAN A FALSE SI EL TIPO ESTABA HABILITADO Y VA A DESHABILITARSE
+		}
+		habilitacionService.cambiarHabilitacion(idHabilitacion, !aux);//ACA CAMBIA EL BOOLEAN DE TIPO DE DISPOSITIVO
         return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
     }
-	
+	//CAMBIA DE PRENDIDO O APAGADO A UN DISPOSITIVO ESPECÍFICO
 	@PostMapping("/cambiaractivado/{idDispositivo}")
 	 public RedirectView cambiarActivado(@PathVariable("idDispositivo") int idDispositivo) {
 		boolean habilitacion = dispositivoService.findByIdDispositivo(idDispositivo).getHabilitado().isHabilitado();
