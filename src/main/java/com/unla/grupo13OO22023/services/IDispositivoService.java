@@ -24,4 +24,6 @@ public interface IDispositivoService {
 	
 	@ModelAttribute("sensoresHumedad")
 	public List<SensorHumedad> getAllSensoresHumedad();
+	
+	public void cambiarActivado(int idActivado, boolean activado);
 }

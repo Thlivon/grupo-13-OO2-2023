@@ -8,10 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.unla.grupo13OO22023.entities.CamaraAula;
 import com.unla.grupo13OO22023.entities.Dispositivo;
+import com.unla.grupo13OO22023.entities.Habilitacion;
 import com.unla.grupo13OO22023.entities.SensorContenedor;
 import com.unla.grupo13OO22023.entities.SensorHumedad;
 import com.unla.grupo13OO22023.repositories.IDispositivoRepository;
 import com.unla.grupo13OO22023.services.IDispositivoService;
+
+import jakarta.transaction.Transactional;
 
 @Service("dispositivoService")
 public class DispositivoService implements IDispositivoService {
@@ -72,4 +75,12 @@ public class DispositivoService implements IDispositivoService {
 	public List<SensorHumedad> getAllSensoresHumedad() {
 		return dispositivoRepository.getAllSensoresHumedad();
 	}
+	
+	@Transactional
+    public void cambiarActivado(int idDispositivo, boolean activado) {
+        Dispositivo dispositivo = dispositivoRepository.findByIdDispositivo(idDispositivo);
+        if (dispositivo != null) {
+            dispositivoRepository.cambiarActivado(idDispositivo, activado);
+        }
+    }
 }

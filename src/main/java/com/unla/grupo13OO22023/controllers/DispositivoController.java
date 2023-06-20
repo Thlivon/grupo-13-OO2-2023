@@ -54,15 +54,30 @@ public class DispositivoController {
 	@PostMapping("/cambiarhabilitacion/{idHabilitacion}")
     public RedirectView cambiarHabilitacion(@PathVariable("idHabilitacion") int idHabilitacion) {
 		boolean aux = habilitacionService.findByIdHabilitacion(idHabilitacion).isHabilitado();
-		if(aux) habilitacionService.cambiarHabilitacion(idHabilitacion, false);
-		else habilitacionService.cambiarHabilitacion(idHabilitacion, true);
+		habilitacionService.cambiarHabilitacion(idHabilitacion, !aux);
         return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
     }
+	
+	@PostMapping("/cambiaractivado/{idDispositivo}")
+	 public RedirectView cambiarActivado(@PathVariable("idDispositivo") int idDispositivo) {
+		boolean habilitacion = dispositivoService.findByIdDispositivo(idDispositivo).getHabilitado().isHabilitado();
+		
+		if(habilitacion) {
+			boolean aux = dispositivoService.findByIdDispositivo(idDispositivo).isActivado();
+			dispositivoService.cambiarActivado(idDispositivo, !aux);	
+		}else {
+	        String errorMessage = "ERROR: No se puede cambiar el estado del dispositivo porque no esta habilitado";
+	        //redirectAttributes.addFlashAttribute("error", errorMessage);
+	    }
+		return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
+	}
 	
 	@PostMapping("/delete/{idDispositivo}")
 	public RedirectView delete(@PathVariable("idDispositivo") int idDispositivo) {
 		dispositivoService.remove(idDispositivo);
 		return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
 	}
+	
+	
 
 }
