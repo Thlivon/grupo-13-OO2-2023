@@ -23,11 +23,13 @@ public class PaginaPrincipalController {
 		return ViewRouteHelper.ESTRUCTURA_INICIO;
 	}
 	
+	//Cuando le das clic en iniciar sesion
 	@GetMapping("/iniciarsesion")
 	public String iniciarsesion() {
 		return ViewRouteHelper.ESTRUCTURA_INICIARSESION;
 	}
 	
+	//Cuando le das clic a registrarse
 	@GetMapping("/registrarse")
 	public String registrarse() {
 		return ViewRouteHelper.ESTRUCTURA_REGISTRARSE;

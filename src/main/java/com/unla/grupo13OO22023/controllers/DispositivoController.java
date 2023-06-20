@@ -60,10 +60,11 @@ public class DispositivoController {
 																								// SABER SI ESTÁ O NO
 																								// HABILITADO EL TIPO
 		if (aux) {
-			dispositivoService.cambiarActivadoSegunHabilitado(idHabilitacion); // ACA CAMBIAN A FALSE SI EL TIPO ESTABA
+			dispositivoService.cambiarActivadoSegunHabilitado(idHabilitacion); 	// CAMBIA A FALSE LOS DISPOSITIVOS
+																				// SI EL TIPO ESTABA
 																				// HABILITADO Y VA A DESHABILITARSE
 		}
-		habilitacionService.cambiarHabilitacion(idHabilitacion, !aux);// ACA CAMBIA EL BOOLEAN DE TIPO DE DISPOSITIVO
+		habilitacionService.cambiarHabilitacion(idHabilitacion, !aux);	//CAMBIA EL BOOLEAN DE TIPO DE DISPOSITIVO
 		return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
 	}
 
@@ -71,11 +72,11 @@ public class DispositivoController {
 	@PostMapping("/cambiaractivado/{idDispositivo}")
 	public RedirectView cambiarActivado(@PathVariable("idDispositivo") int idDispositivo, RedirectAttributes redirectAttributes, Model model) {
 		boolean habilitacion = dispositivoService.findByIdDispositivo(idDispositivo).getHabilitado().isHabilitado();
-		if (habilitacion) {
+		if (habilitacion) {	//Si su tipo de dispositivo esta habilitado 
 			boolean aux = dispositivoService.findByIdDispositivo(idDispositivo).isActivado();
 			dispositivoService.cambiarActivado(idDispositivo, !aux);
 			return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
-		} else {
+		} else {	//Si el tipo no esta habilitado, entonces no puedo activar un dispositivo. 
 			//Traigo la habilitacion que corresponde al dispositivo que falla
 			Habilitacion h = dispositivoService.findByIdDispositivo(idDispositivo).getHabilitado();
 			//Mensaje de error que se va a mostrar

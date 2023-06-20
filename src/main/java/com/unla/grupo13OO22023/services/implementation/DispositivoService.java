@@ -85,10 +85,12 @@ public class DispositivoService implements IDispositivoService {
 		return dispositivoRepository.getAllSensoresHumedad();
 	}
 	
+	//Retorna una  lista de un tipo de dispositivos
 	public List<Dispositivo> getAllDispositivos(int idHabilitacion){
 		return dispositivoRepository.getAllDispositivos(idHabilitacion);
 	}
-
+	
+	//Cambia el activado de un dispositivo si es posible.
 	@Transactional
 	public void cambiarActivado(int idDispositivo, boolean activado) {
 		Dispositivo dispositivo = dispositivoRepository.findByIdDispositivo(idDispositivo);
@@ -100,22 +102,11 @@ public class DispositivoService implements IDispositivoService {
 	// CAMBIA EL ATRIBUTO ACTIVADO DE LOS DISPOSITIVOS DE UN TIPO ESPECIFICO
 	// (idHabilitado) A FALSE
 	public void cambiarActivadoSegunHabilitado(int idHabilitacion) {
-		List<Dispositivo> lista = getAllDispositivos(idHabilitacion);
-				
+		List<Dispositivo> lista = getAllDispositivos(idHabilitacion);		
 		for (int i = 0; i < lista.size(); i++) {
 			cambiarActivado(lista.get(i).getIdDispositivo(), false);
 		}
-//		 switch (idHabilitacion) {
-//	        case 1:
-//	            lista = new ArrayList<Dispositivo>(getAllCamaras());
-//	            break;
-//	        case 2:
-//	            lista = new ArrayList<Dispositivo>(getAllSensoresContenedor());
-//	            break;
-//	        case 3:
-//	            lista = new ArrayList<Dispositivo>(getAllSensoresHumedad());
-//	            break;
-////	    }
 	}
+	
 	
 }
