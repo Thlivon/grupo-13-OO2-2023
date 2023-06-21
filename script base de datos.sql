@@ -8,7 +8,7 @@ VALUES ('1','2023-06-21 12:00:00','ROLE_USER','2023-06-21 12:00:00','1');
 INSERT INTO `user` (`id`, `createdat`, `enabled`, `password`, `updatedat`, `username`)
 VALUES ('2', '2023-06-21 13:00:00', true, '$2a$10$mOx..msOZCiDm3sc3Hak7urtitkMlYVDJJvjAXvCPrHT0RNoqZUqG', '2023-06-21 13:00:00', 'admin');
 INSERT INTO `user_role` (`id`, `createdat`, `role`, `updatedat`, `user_id`)
-VALUES ('2','2023-06-21 13:00:00','ROLE_USER','2023-06-21 13:00:00','2');
+VALUES ('2','2023-06-21 13:00:00','ROLE_ADMIN','2023-06-21 13:00:00','2');
 
 INSERT INTO `aula` (`luces_ycortinas`, `lugar`)
 VALUES (false,"Jose Hernandez Aula 1");
