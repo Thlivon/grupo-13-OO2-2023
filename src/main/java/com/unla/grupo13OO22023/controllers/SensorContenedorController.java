@@ -1,5 +1,8 @@
 package com.unla.grupo13OO22023.controllers;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,12 +19,14 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.unla.grupo13OO22023.entities.Aula;
 import com.unla.grupo13OO22023.entities.CamaraAula;
 import com.unla.grupo13OO22023.entities.Contenedor;
+import com.unla.grupo13OO22023.entities.Evento;
 import com.unla.grupo13OO22023.entities.Habilitacion;
 import com.unla.grupo13OO22023.entities.SensorContenedor;
 import com.unla.grupo13OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo13OO22023.services.IAulaService;
 import com.unla.grupo13OO22023.services.IContenedorService;
 import com.unla.grupo13OO22023.services.IDispositivoService;
+import com.unla.grupo13OO22023.services.IEventoService;
 import com.unla.grupo13OO22023.services.IHabilitacionService;
 
 @Controller
@@ -38,6 +43,10 @@ public class SensorContenedorController {
 	@Autowired
 	@Qualifier("habilitacionService")
 	private IHabilitacionService habilitacionService;
+	
+	@Autowired
+	@Qualifier("eventoService")
+	private IEventoService eventoService;
 	
 	@GetMapping("")
 	public ModelAndView lista() {
@@ -57,20 +66,34 @@ public class SensorContenedorController {
 	
 	@PostMapping("/create")
 	public RedirectView crear(@ModelAttribute("sensorContenedor") SensorContenedor sensorContenedor, ModelMap model) {
+		//Creo un evento e inicializo la lista
+		Evento evento = new Evento("Creacion");
+		Set<Evento> listaEventos = new HashSet<>();;
+		sensorContenedor.setEventos(listaEventos);
+		
+		//busco en la bdd
 		Contenedor contenedor = contenedorService.findByIdContenedor(sensorContenedor.getContenedor().getIdContenedor());
 		Habilitacion habilitacion = habilitacionService.findByNombre("Habilitacion Sensores Contenedor");
+		
+	    //setteo las relaciones
 		contenedor.setSensor(sensorContenedor);
 		habilitacion.getDispositivos().add(sensorContenedor);
 		sensorContenedor.setHabilitado(habilitacion);
+	    evento.setDispositivo(sensorContenedor);//new
+	    sensorContenedor.getEventos().add(evento);//new
+	    
+	    //guardo en la bd
 	    dispositivoService.insertOrUpdate(sensorContenedor);
 	    contenedorService.insertOrUpdate(contenedor);
+	    eventoService.insertOrUpdate(evento);//new
+	    	    
 	    model.addAttribute("contenedores", contenedorService.getAll());
 	    return new RedirectView(ViewRouteHelper.SENSORCONTENEDOR_ROOT);
 	}
 	//pagina de actualizar y eliminar
 	@GetMapping("/{idDispositivo}")
 	public ModelAndView get(@PathVariable("idDispositivo") int idDispositivo) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SENSORCONTENEDOR_UPDATE);
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_UPDATE);
 		mAV.addObject("sensorContenedor", dispositivoService.findByIdDispositivo(idDispositivo));
 		return mAV;
 	}

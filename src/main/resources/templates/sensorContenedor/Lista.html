@@ -19,6 +19,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/dispositivo">Dispositivos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/evento">Eventos</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -44,9 +47,15 @@
 					<td th:text="${sensorContenedor.contenedor.lugar}">Contenedor</td>
 					<td th:text="${sensorContenedor.estaLleno}">Esta Lleno</td>
 					<td>
-						<a th:href="@{/sensorcontenedor/{idDispositivo}(idDispositivo=${sensorContenedor.idDispositivo})}">
+						<a th:href="@{/dispositivo/{idDispositivo}(idDispositivo=${sensorContenedor.idDispositivo})}">
 							Ver detalles
 						</a>
+					</td>
+					<td>
+						<form th:action="@{/dispositivo/delete/{idDispositivo}(idDispositivo=${sensorContenedor.idDispositivo})}" method="post">
+							<button type="submit" class="btn btn-info btn-sm btn-block">Eliminar</button>
+						</form>
+					</td>
 				</tr>
 			</tbody>
 		</table>

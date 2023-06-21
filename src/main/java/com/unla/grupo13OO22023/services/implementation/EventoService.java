@@ -1,7 +1,10 @@
 package com.unla.grupo13OO22023.services.implementation;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.unla.grupo13OO22023.entities.Dispositivo;
@@ -14,6 +17,11 @@ public class EventoService implements IEventoService {
 	@Autowired
 	@Qualifier("eventoRepository")
 	private IEventoRepository eventoRepository;
+	
+	@Override
+	public List<Evento> getAll(){
+		return eventoRepository.findAll();
+	}
 
 	@Override
 	public Evento findByIdEvento(int idEvento) {
@@ -23,5 +31,9 @@ public class EventoService implements IEventoService {
 	public Evento insertOrUpdate(Evento e) {
 		Evento eventoNuevo = eventoRepository.save(e);
 		return eventoNuevo;
+	}
+	
+	public List<Evento> getAllEventos(int idDispositivo){
+		return eventoRepository.getAllEventos(idDispositivo);
 	}
 }

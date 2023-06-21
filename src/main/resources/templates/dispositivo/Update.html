@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Update Dispositivo</title>
+    <title>Eventos del Dispositivo</title>
 </head>
 <body>
 	<!-- No puedo hacer que el navbar sea blanco nose porque (por ahora se queda asi)-->
@@ -13,7 +13,7 @@
 	</nav>
 	
 	
-    <h1>Update Dispositivo</h1>
+    <h1>Eventos del Dispositivo</h1>
 
     <form action="#" th:action="@{/dispositivo/update}" th:object="${dispositivo}" method="post">
         <input type="hidden" th:field="*{idDispositivo}" />
@@ -28,7 +28,3 @@
     </form>
 </body>
 </html>
-
-
-
-

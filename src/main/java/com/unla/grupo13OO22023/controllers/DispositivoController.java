@@ -81,7 +81,9 @@ public class DispositivoController {
 		//busco al dispositivo en la bdd
 		Dispositivo dispositivo = dispositivoService.findByIdDispositivo(idDispositivo);
 		//creo el evento
-		Evento evento = new Evento("Se modifico el estado a "+!dispositivo.isActivado(),dispositivo);
+		String evAux="Se activo";
+		if(dispositivo.isActivado()) evAux = "Se desactivo";
+		Evento evento = new Evento(evAux,dispositivo);
 		//establezco la relacion
 		dispositivo.getEventos().add(evento); 
 		//lo cargo en la bdd

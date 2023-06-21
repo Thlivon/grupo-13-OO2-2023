@@ -96,7 +96,7 @@ public class CamaraController {
 	//vista de 1 dispositivo
 	@GetMapping("/{idDispositivo}")
 	public ModelAndView get(@PathVariable("idDispositivo") int idDispositivo) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAMARA_UPDATE);
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_UPDATE);
 		mAV.addObject("camara", dispositivoService.findByIdDispositivo(idDispositivo));
 		return mAV;
 	}

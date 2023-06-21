@@ -11,17 +11,20 @@
 <body>
 	<!-- No puedo hacer que el navbar sea blanco nose porque (por ahora se queda asi)-->
 	<nav class="navbar navbar-expand bg-dark">
-        <div class="container">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/inicio">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dispositivo">Dispositivos</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+		<div class="container">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/inicio">Inicio</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/dispositivo">Dispositivos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/evento">Eventos</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
 	<div class="container my-2" align="center">
 
@@ -36,6 +39,7 @@
 					<th>Aula</th>
 					<th>Activada</th>
 					<th>HayAlguien</th>
+					<th></th>
 				</tr>
 			</thead>
 			<!-- Modificar referenciando a lo nuestro (todavia nose bien como se hace) -->
@@ -46,9 +50,15 @@
 					<td th:text="${camaraAula.activado}">Activada</td>
 					<td th:text="${camaraAula.hayAlguien}">HayAlguien</td>
 					<td>
-						<a th:href="@{/camara/{idDispositivo}(idDispositivo=${camaraAula.idDispositivo})}">
-							Ver detalles
+						<a th:href="@{/dispositivo/{idDispositivo}(idDispositivo=${camaraAula.idDispositivo})}">
+							Ver Eventos
 						</a>
+					</td>
+					<td>
+						<form th:action="@{/dispositivo/delete/{idDispositivo}(idDispositivo=${camaraAula.idDispositivo})}" method="post">
+							<button type="submit" class="btn btn-info btn-sm btn-block">Eliminar</button>
+						</form>
+					</td>
 				</tr>
 			</tbody>
 		</table>
