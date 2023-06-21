@@ -18,7 +18,7 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
-@Table(name="Habilitacion")
+@Table(name="habilitacion")
 public class Habilitacion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +30,7 @@ public class Habilitacion {
 	@Column(name="habilitado")
 	private boolean habilitado;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name="dispositivos", nullable=false)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="habilitado")
 	private Set<Dispositivo> dispositivos;
 
 	public Habilitacion() {
@@ -80,6 +79,11 @@ public class Habilitacion {
 
 	public void setDispositivos(Set<Dispositivo> dispositivos) {
 		this.dispositivos = dispositivos;
+	}
+
+	@Override
+	public String toString() {
+		return "Habilitacion [idHabilitacion=" + idHabilitacion + ", nombre=" + nombre + "]";
 	}
 
 	

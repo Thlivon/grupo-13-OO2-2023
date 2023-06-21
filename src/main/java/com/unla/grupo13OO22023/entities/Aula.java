@@ -84,4 +84,19 @@ public class Aula {
 		this.camara = camara;
 	}
 
+
+	public Aula(int idAula, String lugar, boolean lucesYcortinas) {
+		super();
+		this.idAula = idAula;
+		this.lugar = lugar;
+		this.lucesYcortinas = lucesYcortinas;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Aula [idAula=" + idAula + ", lugar=" + lugar + ", lucesYcortinas=" + lucesYcortinas + "]";
+	}
+	
+
 }

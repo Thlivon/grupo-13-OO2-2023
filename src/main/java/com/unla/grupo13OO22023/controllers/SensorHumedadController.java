@@ -88,25 +88,25 @@ public class SensorHumedadController {
 	    model.addAttribute("espacioVerdes", espacioVerdeService.getAll());
 	    return new RedirectView(ViewRouteHelper.SENSORHUMEDAD_ROOT);
 	}
-	//pagina de actualizar y eliminar
-	@GetMapping("/{idDispositivo}")
-	public ModelAndView get(@PathVariable("idDispositivo") int idDispositivo) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_UPDATE);
-		mAV.addObject("sensorHumedad", dispositivoService.findByIdDispositivo(idDispositivo));
-		return mAV;
-	}
-	//cuando apretas update
-	@PostMapping("/update")
-	public RedirectView update(@ModelAttribute("sensorHumedad") SensorHumedad sensorHumedad) {
-		dispositivoService.insertOrUpdate(sensorHumedad);
-		return new RedirectView(ViewRouteHelper.SENSORHUMEDAD_ROOT);
-	}
-	//cuando apretas delete
-	@PostMapping("/delete/{idDispositivo}")
-	public RedirectView delete(@PathVariable("idDispositivo") int idDispositivo) {
-		SensorHumedad sensorHumedad= (SensorHumedad)dispositivoService.findByIdDispositivo(idDispositivo);
-		sensorHumedad.getEspacioVerde().setSenHumedad(null);
-		dispositivoService.remove(idDispositivo);
-		return new RedirectView(ViewRouteHelper.SENSORHUMEDAD_ROOT);
-	}
+//	//pagina de actualizar y eliminar
+//	@GetMapping("/{idDispositivo}")
+//	public ModelAndView get(@PathVariable("idDispositivo") int idDispositivo) {
+//		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_UPDATE);
+//		mAV.addObject("sensorHumedad", dispositivoService.findByIdDispositivo(idDispositivo));
+//		return mAV;
+//	}
+//	//cuando apretas update
+//	@PostMapping("/update")
+//	public RedirectView update(@ModelAttribute("sensorHumedad") SensorHumedad sensorHumedad) {
+//		dispositivoService.insertOrUpdate(sensorHumedad);
+//		return new RedirectView(ViewRouteHelper.SENSORHUMEDAD_ROOT);
+//	}
+//	//cuando apretas delete
+//	@PostMapping("/delete/{idDispositivo}")
+//	public RedirectView delete(@PathVariable("idDispositivo") int idDispositivo) {
+//		SensorHumedad sensorHumedad= (SensorHumedad)dispositivoService.findByIdDispositivo(idDispositivo);
+//		sensorHumedad.getEspacioVerde().setSenHumedad(null);
+//		dispositivoService.remove(idDispositivo);
+//		return new RedirectView(ViewRouteHelper.SENSORHUMEDAD_ROOT);
+//	}
 }

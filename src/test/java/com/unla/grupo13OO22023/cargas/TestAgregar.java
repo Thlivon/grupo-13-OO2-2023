@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.unla.grupo13OO22023.entities.Aula;
+import com.unla.grupo13OO22023.entities.CamaraAula;
 import com.unla.grupo13OO22023.entities.Contenedor;
 import com.unla.grupo13OO22023.entities.Dispositivo;
 import com.unla.grupo13OO22023.entities.EspacioVerde;
@@ -15,6 +16,7 @@ import com.unla.grupo13OO22023.repositories.IContenedorRepository;
 import com.unla.grupo13OO22023.repositories.IDispositivoRepository;
 import com.unla.grupo13OO22023.repositories.IEspacioVerdeRepository;
 import com.unla.grupo13OO22023.repositories.IHabilitacionRepository;
+import com.unla.grupo13OO22023.services.IDispositivoService;
 
 @SpringBootTest
 public class TestAgregar {
@@ -34,9 +36,12 @@ public class TestAgregar {
 	@Autowired
 	private IDispositivoRepository dispositivoRepository;
 	
+	@Autowired
+	private IDispositivoService dispositivoService;
+	
 	@Test
 	public void testAgregar() {
-		// Agrega las aulas a la base de datos
+//		// Agrega las aulas a la base de datos
 //		aulaRepository.save(new Aula("Aula roja"));
 //		aulaRepository.save(new Aula("Aula azul"));
 //		aulaRepository.save(new Aula("Aula verde"));
@@ -58,16 +63,14 @@ public class TestAgregar {
 //		habilitacionRepository.save(new Habilitacion("Habilitacion Camaras"));
 //		habilitacionRepository.save(new Habilitacion("Habilitacion Sensores Contenedor"));
 //		habilitacionRepository.save(new Habilitacion("Habilitacion Sensores Humedad"));
-		Evento evento = new Evento("Se detectó un humano");
-//        Dispositivo dispositivo = dispositivoRepository.findByIdDispositivo(1);
-        System.out.println(dispositivoRepository.findByIdDispositivo(1).getHabilitado());
-//        dispositivo.getEventos().add(evento);
-//        System.out.println(evento);
-//        evento.setDispositivo(dispositivo);
-//        eventoRepository.save(evento);
-//        System.out.println(evento);
-//        System.out.println(dispositivo.getEventos());
 		
+		
+//		//obtengo lista de camaras creadas del momento
+//		int aleatorio = (int) (Math.random() * dispositivoRepository.getAllCamarasYAtributos().size());
+//		
+//		//accedo a una camara ya creada aleatoria y activo la funcion simulando q detecto algo
+//		CamaraAula camaraAula= dispositivoRepository.getAllCamarasYAtributos().get(0);
+//		dispositivoService.hayAlguien(camaraAula);
 		
 	}	
 }

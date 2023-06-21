@@ -33,11 +33,10 @@ public class Dispositivo {
 	private boolean activado;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="habilitado", nullable=false)
+	@JoinColumn(name="idHabilitacion", nullable=false)
 	private Habilitacion habilitado;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name="eventos", nullable=false)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="dispositivo")
 	private Set<Evento> eventos;
 	
 	

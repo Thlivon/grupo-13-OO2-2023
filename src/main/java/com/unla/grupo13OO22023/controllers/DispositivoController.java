@@ -68,7 +68,7 @@ public class DispositivoController {
 	public RedirectView cambiarActivado(@PathVariable("idDispositivo") int idDispositivo, RedirectAttributes redirectAttributes, Model model) {
 		boolean habilitacion = dispositivoService.findByIdDispositivo(idDispositivo).getHabilitado().isHabilitado();
 		//busco al dispositivo en la bdd
-		Dispositivo dispositivo = dispositivoService.findByIdDispositivo(idDispositivo);
+		Dispositivo dispositivo = dispositivoService.getDispositivoYEvento(idDispositivo);
 		//creo el evento
 		String evAux="Se activo";
 		if(dispositivo.isActivado()) evAux = "Se desactivo";

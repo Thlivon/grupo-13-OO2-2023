@@ -90,25 +90,25 @@ public class SensorContenedorController {
 	    model.addAttribute("contenedores", contenedorService.getAll());
 	    return new RedirectView(ViewRouteHelper.SENSORCONTENEDOR_ROOT);
 	}
-	//pagina de actualizar y eliminar
-	@GetMapping("/{idDispositivo}")
-	public ModelAndView get(@PathVariable("idDispositivo") int idDispositivo) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_UPDATE);
-		mAV.addObject("sensorContenedor", dispositivoService.findByIdDispositivo(idDispositivo));
-		return mAV;
-	}
-	//cuando apretas update
-	@PostMapping("/update")
-	public RedirectView update(@ModelAttribute("sensorContenedor") SensorContenedor sensorContenedor) {
-		dispositivoService.insertOrUpdate(sensorContenedor);
-		return new RedirectView(ViewRouteHelper.SENSORCONTENEDOR_ROOT);
-	}
-	//cuando apretas delete
-	@PostMapping("/delete/{idDispositivo}")
-	public RedirectView delete(@PathVariable("idDispositivo") int idDispositivo) {
-		SensorContenedor sensorContenedor= (SensorContenedor)dispositivoService.findByIdDispositivo(idDispositivo);
-		sensorContenedor.getContenedor().setSensor(null);
-		dispositivoService.remove(idDispositivo);
-		return new RedirectView(ViewRouteHelper.SENSORCONTENEDOR_ROOT);
-	}
+//	//pagina de actualizar y eliminar
+//	@GetMapping("/{idDispositivo}")
+//	public ModelAndView get(@PathVariable("idDispositivo") int idDispositivo) {
+//		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_UPDATE);
+//		mAV.addObject("sensorContenedor", dispositivoService.findByIdDispositivo(idDispositivo));
+//		return mAV;
+//	}
+//	//cuando apretas update
+//	@PostMapping("/update")
+//	public RedirectView update(@ModelAttribute("sensorContenedor") SensorContenedor sensorContenedor) {
+//		dispositivoService.insertOrUpdate(sensorContenedor);
+//		return new RedirectView(ViewRouteHelper.SENSORCONTENEDOR_ROOT);
+//	}
+//	//cuando apretas delete
+//	@PostMapping("/delete/{idDispositivo}")
+//	public RedirectView delete(@PathVariable("idDispositivo") int idDispositivo) {
+//		SensorContenedor sensorContenedor= (SensorContenedor)dispositivoService.findByIdDispositivo(idDispositivo);
+//		sensorContenedor.getContenedor().setSensor(null);
+//		dispositivoService.remove(idDispositivo);
+//		return new RedirectView(ViewRouteHelper.SENSORCONTENEDOR_ROOT);
+//	}
 }

@@ -32,4 +32,7 @@ public interface IDispositivoService {
 	public void cambiarActivado(int idActivado, boolean activado);
 	
 	public void cambiarActivadoSegunHabilitado(int idHabilitacion);
+	
+	//homer camaras
+	public void hayAlguien(CamaraAula camara) throws Exception;
 }

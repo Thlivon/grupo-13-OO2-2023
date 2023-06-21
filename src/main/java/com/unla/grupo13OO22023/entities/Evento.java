@@ -33,7 +33,7 @@ public class Evento {
 	private LocalDateTime fechaYHora;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="dispositivo", nullable=false)
+	@JoinColumn(name="idDispositivo", nullable=false)
 	private Dispositivo dispositivo;
 
 	public Evento() {

@@ -93,24 +93,24 @@ public class CamaraController {
 	}
 
 
-	//vista de 1 dispositivo
-	@GetMapping("/{idDispositivo}")
-	public ModelAndView get(@PathVariable("idDispositivo") int idDispositivo) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_UPDATE);
-		mAV.addObject("camara", dispositivoService.findByIdDispositivo(idDispositivo));
-		return mAV;
-	}
-
-	@PostMapping("/update")
-	public RedirectView update(@ModelAttribute("camara") CamaraAula camara) {
-		dispositivoService.insertOrUpdate(camara);
-		return new RedirectView(ViewRouteHelper.CAMARA_ROOT);
-	}
-
-	@PostMapping("/delete/{idDispositivo}")
-	public RedirectView delete(@PathVariable("idDispositivo") int idDispositivo) {
-		dispositivoService.remove(idDispositivo);
-		return new RedirectView(ViewRouteHelper.CAMARA_ROOT);
-	}
+//	//vista de 1 dispositivo
+//	@GetMapping("/{idDispositivo}")
+//	public ModelAndView get(@PathVariable("idDispositivo") int idDispositivo) {
+//		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_UPDATE);
+//		mAV.addObject("camara", dispositivoService.findByIdDispositivo(idDispositivo));
+//		return mAV;
+//	}
+//
+//	@PostMapping("/update")
+//	public RedirectView update(@ModelAttribute("camara") CamaraAula camara) {
+//		dispositivoService.insertOrUpdate(camara);
+//		return new RedirectView(ViewRouteHelper.CAMARA_ROOT);
+//	}
+//
+//	@PostMapping("/delete/{idDispositivo}")
+//	public RedirectView delete(@PathVariable("idDispositivo") int idDispositivo) {
+//		dispositivoService.remove(idDispositivo);
+//		return new RedirectView(ViewRouteHelper.CAMARA_ROOT);
+//	}
 
 }

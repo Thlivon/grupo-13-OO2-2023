@@ -42,4 +42,7 @@ public interface IDispositivoRepository extends JpaRepository<Dispositivo, Seria
 	@Query("UPDATE Dispositivo d SET d.activado = :activado WHERE d.idDispositivo = :idDispositivo")
 	public void cambiarActivado(@Param("idDispositivo") int idDispositivo, @Param("activado") boolean activado);
 
+	@Query("SELECT c FROM CamaraAula c INNER JOIN FETCH c.habilitado INNER JOIN FETCH c.eventos")
+	public List<CamaraAula> getAllCamarasYAtributos();
+	
 }

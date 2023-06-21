@@ -2,8 +2,10 @@ package com.unla.grupo13OO22023.services.implementation;
 
 import java.util.List;
 import java.util.Set;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.query.Param;
@@ -19,6 +21,7 @@ import com.unla.grupo13OO22023.repositories.IDispositivoRepository;
 import com.unla.grupo13OO22023.repositories.IEventoRepository;
 import com.unla.grupo13OO22023.repositories.IHabilitacionRepository;
 import com.unla.grupo13OO22023.services.IDispositivoService;
+import com.unla.grupo13OO22023.services.IEventoService;
 
 import jakarta.transaction.Transactional;
 
@@ -34,6 +37,9 @@ public class DispositivoService implements IDispositivoService {
 	@Autowired
 	@Qualifier("eventoRepository")
 	private IEventoRepository eventoRepository;
+	@Autowired
+	@Qualifier("eventoService")
+	private IEventoService eventoService;
 
 	@Override
 	public List<Dispositivo> getAll() {
@@ -128,4 +134,29 @@ public class DispositivoService implements IDispositivoService {
 	}
 	
 	
+	//TEST DETECCION HOMER - CAMARAAULA
+	public void hayAlguien(CamaraAula camara) throws Exception{
+		
+		if (!(camara.isActivado() && camara.getHabilitado().isHabilitado())) throw new Exception ("El dispositivo no esta en servicio");
+		boolean hayAlguien = camara.isHayAlguien();
+		
+		//strings del evento
+		String aux = "La camara detecto a alguien";
+		if(hayAlguien) aux ="La camara no detecta a nadie";
+		
+		//modifico
+		camara.setHayAlguien(!hayAlguien);
+		camara.getAula().setLucesYcortinas(!hayAlguien);
+		
+		//guardo el cambio en la bdd
+		insertOrUpdate(camara);
+		
+		//creo el evento
+		Evento evento = new Evento(aux,camara);
+		camara.getEventos().add(evento);
+		eventoService.insertOrUpdate(evento);
+
+	}
+	
+
 }
