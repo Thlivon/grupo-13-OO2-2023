@@ -42,9 +42,9 @@ public class DispositivoController {
 	public ModelAndView lista() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_LISTA);
 		mAV.addObject("dispositivos", dispositivoService.getAll());
-		mAV.addObject("habilitacionCamara", habilitacionService.findByNombre("Habilitacion Camaras"));
-		mAV.addObject("habilitacionContenedor", habilitacionService.findByNombre("Habilitacion Sensores Contenedor"));
-		mAV.addObject("habilitacionHumedad", habilitacionService.findByNombre("Habilitacion Sensores Humedad"));
+		mAV.addObject("habilitacionCamara", habilitacionService.findByNombre("Camaras"));
+		mAV.addObject("habilitacionContenedor", habilitacionService.findByNombre("Sensores Contenedor"));
+		mAV.addObject("habilitacionHumedad", habilitacionService.findByNombre("Sensores Humedad"));
 		return mAV;
 	}
 	
