@@ -6,6 +6,7 @@ import java.util.Set;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,6 +63,7 @@ public class SensorHumedadController {
 		return mAV; //aca
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/create")
 	public RedirectView crear(@ModelAttribute("sensorHumedad") SensorHumedad sensorHumedad, ModelMap model) {
 	    //Creo un evento e inicializo la lista

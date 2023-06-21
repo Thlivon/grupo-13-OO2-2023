@@ -3,6 +3,8 @@ package com.unla.grupo13OO22023.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import com.unla.grupo13OO22023.entities.Evento;
 import com.unla.grupo13OO22023.entities.Habilitacion;
 import com.unla.grupo13OO22023.entities.SensorContenedor;
 import com.unla.grupo13OO22023.entities.SensorHumedad;
+import com.unla.grupo13OO22023.entities.User;
 import com.unla.grupo13OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo13OO22023.services.IDispositivoService;
 import com.unla.grupo13OO22023.services.IEventoService;
@@ -49,6 +52,7 @@ public class DispositivoController {
 	}
 	
 	// CAMBIA A HABILITADO O DESHABILITADO UN >>>TIPO<<< DE DISPOSITIVO
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/cambiarhabilitacion/{idHabilitacion}")
 	public RedirectView cambiarHabilitacion(@PathVariable("idHabilitacion") int idHabilitacion) {
 		boolean aux = habilitacionService.findByIdHabilitacion(idHabilitacion).isHabilitado();// AGARRO EL BOOLEAN PARA
@@ -64,6 +68,7 @@ public class DispositivoController {
 	}
 
 	// CAMBIA DE PRENDIDO O APAGADO A UN DISPOSITIVO ESPECÍFICO
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/cambiaractivado/{idDispositivo}")
 	public RedirectView cambiarActivado(@PathVariable("idDispositivo") int idDispositivo, RedirectAttributes redirectAttributes, Model model) {
 		//busco al dispositivo en la bdd
@@ -93,7 +98,8 @@ public class DispositivoController {
 			return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
 		}
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/delete/{idDispositivo}")
 	public RedirectView delete(@PathVariable("idDispositivo") int idDispositivo) {
 		String aux="";
