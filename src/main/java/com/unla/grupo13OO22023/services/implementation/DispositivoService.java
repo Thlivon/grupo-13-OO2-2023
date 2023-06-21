@@ -158,5 +158,58 @@ public class DispositivoService implements IDispositivoService {
 
 	}
 	
-
+	//TEST DETECCION BOLBON - SENSORCONTENEDOR
+	public void estaLleno(SensorContenedor sensor) throws Exception{
+		if (!(sensor.isActivado() && sensor.getHabilitado().isHabilitado())) throw new Exception ("El dispositivo no esta en servicio");
+		boolean estaLleno = sensor.isEstaLleno();
+		
+		//strings del evento
+		String aux = "El contenedor está lleno";
+		if(estaLleno) aux ="El contenedor se ha vaciado";
+		
+		//modifico
+		sensor.setEstaLleno(!estaLleno);
+		
+		//guardo el cambio en la bdd
+		insertOrUpdate(sensor);
+		
+		//creo el evento
+		Evento evento = new Evento(aux,sensor);
+		sensor.getEventos().add(evento);
+		eventoService.insertOrUpdate(evento);
+	}
+	
+	//TEST DETECCION BOLBON - SENSORCONTENEDOR
+	public void tempBaja(SensorHumedad sensor) throws Exception{
+		if (!(sensor.isActivado() && sensor.getHabilitado().isHabilitado())) throw new Exception ("El dispositivo no esta en servicio");
+		boolean tempBaja = sensor.isTempBaja();
+		
+		//strings del evento
+		String aux = "Temperatura Baja. Se riega en el pasto";
+		if(tempBaja) aux ="Temperatura Normal. Se ha dejado de regar";
+		
+		//modifico
+		sensor.setTempBaja(!tempBaja);
+		
+		//guardo el cambio en la bdd
+		insertOrUpdate(sensor);
+		
+		//creo el evento
+		Evento evento = new Evento(aux,sensor);
+		sensor.getEventos().add(evento);
+		eventoService.insertOrUpdate(evento);
+	}
+	
+	public void simular(Dispositivo dispositivo) throws Exception{
+		if(dispositivo instanceof CamaraAula) { 
+			hayAlguien((CamaraAula) dispositivo);
+        }
+		if(dispositivo instanceof SensorContenedor) { 
+			estaLleno((SensorContenedor) dispositivo);
+		}
+		if(dispositivo instanceof SensorHumedad) { 
+			tempBaja((SensorHumedad) dispositivo);
+		}
+		
+	}
 }

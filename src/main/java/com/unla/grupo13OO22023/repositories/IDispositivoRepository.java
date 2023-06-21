@@ -45,4 +45,6 @@ public interface IDispositivoRepository extends JpaRepository<Dispositivo, Seria
 	@Query("SELECT c FROM CamaraAula c INNER JOIN FETCH c.habilitado INNER JOIN FETCH c.eventos")
 	public List<CamaraAula> getAllCamarasYAtributos();
 	
+	@Query("SELECT d FROM Dispositivo d INNER JOIN FETCH d.habilitado INNER JOIN FETCH d.eventos")
+	public List<Dispositivo> getAllDispositivoYAtributos();
 }

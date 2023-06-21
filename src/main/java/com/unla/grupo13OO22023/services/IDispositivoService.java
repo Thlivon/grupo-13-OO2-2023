@@ -35,4 +35,12 @@ public interface IDispositivoService {
 	
 	//homer camaras
 	public void hayAlguien(CamaraAula camara) throws Exception;
+	//bolbon sensorescontenedor
+	public void estaLleno(SensorContenedor sensor) throws Exception;
+	//thomi sensoreshumedad
+	public void tempBaja(SensorHumedad sensor) throws Exception;
+	//simulador general
+	public void simular(Dispositivo dispositivo) throws Exception;
+	
+	
 }
