@@ -13,4 +13,4 @@
 ## Indicaciones para cargar la base de datos:
 
 - Correr el servidor localmente.
-- Ejecutar `TestAgregar`.
+- Ejecutar script `script base de datos.sql`.
