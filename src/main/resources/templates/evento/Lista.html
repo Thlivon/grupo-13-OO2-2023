@@ -48,10 +48,6 @@
 					<td th:text="${evento.dispositivo.idDispositivo}">IdDispositivo</td>
 					<td th:text="${evento.descripcion}">Descripcion</td>
 					<td th:text="${evento.fechaYHora}">Fecha</td>
-					<td>
-						<a th:href="@{/dispositivo/{idDispositivo}(idDispositivo=${evento.dispositivo.idDispositivo})}">
-							Ver Dispositivo
-						</a>
 				</tr>
 			</tbody>
 		</table>

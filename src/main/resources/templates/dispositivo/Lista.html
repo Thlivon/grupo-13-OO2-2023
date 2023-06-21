@@ -18,6 +18,9 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/evento">Eventos</a>
 				</li>
+				<li class="nav-item">
+                    <a class="nav-link" href="/dispositivo">Dispositivos</a>
+                </li>
 			</ul>
 		</div>
 	</nav>
@@ -48,7 +51,7 @@
 					</td>
 					<td>
 						<a th:href="@{camara}">
-							Ver detalles
+							Ver tipo
 						</a>
 					</td> <!-- Cierre de la etiqueta <td> agregado -->
 				</tr>
@@ -65,7 +68,7 @@
 					</td>
 					<td>
 						<a th:href="@{sensorcontenedor}">
-							Ver detalles
+							Ver tipo
 						</a>
 					</td> <!-- Cierre de la etiqueta <td> agregado -->
 				</tr>
@@ -82,7 +85,7 @@
 					</td>
 					<td>
 						<a th:href="@{sensorhumedad}">
-							Ver detalles
+							Ver tipo
 						</a>
 					</td> <!-- Cierre de la etiqueta <td> agregado -->
 				</tr>
@@ -116,7 +119,7 @@
 					</td>
 					<td>
 						<a th:href="@{/dispositivo/{idDispositivo}(idDispositivo=${dispositivo.idDispositivo})}">
-							Ver detalles
+							Ver eventos
 						</a>
 					</td> <!-- Cierre de la etiqueta <td> agregado -->
 				</tr>

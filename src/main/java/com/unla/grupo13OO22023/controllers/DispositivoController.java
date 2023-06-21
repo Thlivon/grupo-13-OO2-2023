@@ -47,21 +47,7 @@ public class DispositivoController {
 		mAV.addObject("habilitacionHumedad", habilitacionService.findByNombre("Habilitacion Sensores Humedad"));
 		return mAV;
 	}
-	// IMPLEMENTAR EL CREAR
-
-	// vista de 1 dispositivo
-	@GetMapping("/{idDispositivo}")
-	public ModelAndView get(@PathVariable("idDispositivo") int idDispositivo) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_UPDATE);
-		mAV.addObject("dispositivo", dispositivoService.findByIdDispositivo(idDispositivo));
-		return mAV;
-	}
-
-//	@PostMapping("/update")
-//	public RedirectView update(@ModelAttribute("dispositivo") Dispositivo dispositivo) {
-//		dispositivoService.insertOrUpdate(dispositivo);
-//		return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
-//	}
+	
 	// CAMBIA A HABILITADO O DESHABILITADO UN >>>TIPO<<< DE DISPOSITIVO
 	@PostMapping("/cambiarhabilitacion/{idHabilitacion}")
 	public RedirectView cambiarHabilitacion(@PathVariable("idHabilitacion") int idHabilitacion) {
@@ -117,5 +103,18 @@ public class DispositivoController {
 		dispositivoService.remove(idDispositivo);
 		return new RedirectView(aux);
 	}
+	
+	
+	//EVENTOS POR DISPOSITIVO
+	@GetMapping("/{idDispositivo}")
+    public ModelAndView get(@PathVariable("idDispositivo") int idDispositivo) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EVENTO_LISTA);
+        Dispositivo dispositivo = dispositivoService.findByIdDispositivo(idDispositivo);
+
+        mAV.addObject("dispositivo", dispositivo);
+        mAV.addObject("eventos", dispositivo.getEventos());
+        return mAV;
+    }
+	
 
 }
