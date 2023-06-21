@@ -13,9 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.unla.grupo13OO22023.entities.CamaraAula;
 import com.unla.grupo13OO22023.entities.Dispositivo;
 import com.unla.grupo13OO22023.entities.Evento;
 import com.unla.grupo13OO22023.entities.Habilitacion;
+import com.unla.grupo13OO22023.entities.SensorContenedor;
+import com.unla.grupo13OO22023.entities.SensorHumedad;
 import com.unla.grupo13OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo13OO22023.services.IDispositivoService;
 import com.unla.grupo13OO22023.services.IEventoService;
@@ -107,8 +110,12 @@ public class DispositivoController {
 
 	@PostMapping("/delete/{idDispositivo}")
 	public RedirectView delete(@PathVariable("idDispositivo") int idDispositivo) {
+		String aux="";
+		if(dispositivoService.findByIdDispositivo(idDispositivo) instanceof CamaraAula)aux = ViewRouteHelper.CAMARA_ROOT;
+		if(dispositivoService.findByIdDispositivo(idDispositivo) instanceof SensorContenedor)aux = ViewRouteHelper.SENSORCONTENEDOR_ROOT;
+		if(dispositivoService.findByIdDispositivo(idDispositivo) instanceof SensorHumedad)aux = ViewRouteHelper.SENSORHUMEDAD_ROOT;
 		dispositivoService.remove(idDispositivo);
-		return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
+		return new RedirectView(aux);
 	}
 
 }
