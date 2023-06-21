@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Inicio</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	
+
 	<style>
 		/* Estilos */
 
@@ -19,11 +19,11 @@
 		.lead {
 			font-size: 1.25rem;
 		}
-		
-		.btn-group-container {
-			margin: 0% 0% 8% 8%; /* margenes izquierdos y derecho de los botones */
-		}
 
+		.btn-group-container {
+			margin: 0% 0% 8% 8%;
+			/* margenes izquierdos y derecho de los botones */
+		}
 	</style>
 </head>
 
@@ -34,11 +34,12 @@
 			<a class="navbar-brand" href="/inicio">Inicio</a>
 		</div>
 	</nav>
-	
+
 	<nav class="navbar navbar-dark bg-dark text-right">
 		<div class="justify-content-end w-100">
-			<a class="btn btn-info" href="/iniciarsesion">Iniciar Sesión</a>
-			<a class="btn btn-info" href="/registrarse">Registrarse</a>
+			<form th:action="@{/logout}" method="post">
+				<input class="btn btn-secondary" type="submit" value="Logout" />
+			</form>
 		</div>
 	</nav>
 

@@ -42,35 +42,30 @@ public class TestAgregar {
 	@Test
 	public void testAgregar() {
 //		// Agrega las aulas a la base de datos
-//		aulaRepository.save(new Aula("Aula roja"));
-//		aulaRepository.save(new Aula("Aula azul"));
-//		aulaRepository.save(new Aula("Aula verde"));
-//		aulaRepository.save(new Aula("Aula amarilla"));
+		aulaRepository.save(new Aula("Aula roja"));
+		aulaRepository.save(new Aula("Aula azul"));
+		aulaRepository.save(new Aula("Aula verde"));
+		aulaRepository.save(new Aula("Aula amarilla"));
 //		
 //		// Agrega los contenedores a la base de datos
-//		contenedorRepository.save(new Contenedor("Contenedor rojo"));
-//		contenedorRepository.save(new Contenedor("Contenedor azul"));
-//		contenedorRepository.save(new Contenedor("Contenedor verde"));
-//		contenedorRepository.save(new Contenedor("Contenedor amarillo"));
+		contenedorRepository.save(new Contenedor("Contenedor rojo"));
+		contenedorRepository.save(new Contenedor("Contenedor azul"));
+		contenedorRepository.save(new Contenedor("Contenedor verde"));
+		contenedorRepository.save(new Contenedor("Contenedor amarillo"));
 //		
 //		// Agrega los espacios verdes a la base de datos
-//		espacioVerdeRepository.save(new EspacioVerde("Espacio Verde Sector A"));
-//		espacioVerdeRepository.save(new EspacioVerde("Espacio Verde Sector B"));
-//		espacioVerdeRepository.save(new EspacioVerde("Espacio Verde Sector C"));
-//		espacioVerdeRepository.save(new EspacioVerde("Espacio Verde Sector D"));
+		espacioVerdeRepository.save(new EspacioVerde("Espacio Verde Sector A"));
+		espacioVerdeRepository.save(new EspacioVerde("Espacio Verde Sector B"));
+		espacioVerdeRepository.save(new EspacioVerde("Espacio Verde Sector C"));
+		espacioVerdeRepository.save(new EspacioVerde("Espacio Verde Sector D"));
 //		
 //		//Agrega los 3 tipos de dispositivo (Habilitar)
-//		habilitacionRepository.save(new Habilitacion("Habilitacion Camaras"));
-//		habilitacionRepository.save(new Habilitacion("Habilitacion Sensores Contenedor"));
-//		habilitacionRepository.save(new Habilitacion("Habilitacion Sensores Humedad"));
+		habilitacionRepository.save(new Habilitacion("Habilitacion Camaras"));
+		habilitacionRepository.save(new Habilitacion("Habilitacion Sensores Contenedor"));
+		habilitacionRepository.save(new Habilitacion("Habilitacion Sensores Humedad"));
 		
 		
-//		//obtengo lista de camaras creadas del momento
-//		int aleatorio = (int) (Math.random() * dispositivoRepository.getAllCamarasYAtributos().size());
-//		
-//		//accedo a una camara ya creada aleatoria y activo la funcion simulando q detecto algo
-//		CamaraAula camaraAula= dispositivoRepository.getAllCamarasYAtributos().get(0);
-//		dispositivoService.hayAlguien(camaraAula);
+
 		
 	}	
 }

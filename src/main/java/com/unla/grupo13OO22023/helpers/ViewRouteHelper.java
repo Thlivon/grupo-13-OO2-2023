@@ -40,6 +40,9 @@ public class ViewRouteHelper {
 	//REDIRECT
 	public final static String DISPOSITIVO_ROOT="/dispositivo";
 	
+	//USER
+	public final static String USER_LOGIN = "user/login";
+	
 
 	
 	

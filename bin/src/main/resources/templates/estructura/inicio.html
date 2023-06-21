@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inicio</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	
+	<style>
+		/* Estilos */
+
+		.jumbotron {
+			background-color: #343a40;
+			color: #fff;
+			padding: 2rem;
+		}
+
+		.lead {
+			font-size: 1.25rem;
+		}
+		
+		.btn-group-container {
+			margin: 0% 0% 8% 8%; /* margenes izquierdos y derecho de los botones */
+		}
+
+	</style>
+</head>
+
+<body>
+	<!-- No puedo hacer que el navbar sea blanco nose porque (por ahora se queda asi)-->
+	<nav class="navbar navbar-nav">
+		<div class="container">
+			<a class="navbar-brand" href="/inicio">Inicio</a>
+		</div>
+	</nav>
+	
+	<nav class="navbar navbar-dark bg-dark text-right">
+		<div class="justify-content-end w-100">
+			<a class="btn btn-info" href="/iniciarsesion">Iniciar Sesión</a>
+			<a class="btn btn-info" href="/registrarse">Registrarse</a>
+		</div>
+	</nav>
+
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1 class="display-4">Observa todos los dispositivos de la UNLa</h1>
+			<p class="lead">Puedes ver la lista de dispositivos esparcidos por el campus que contiene la Universidad</p>
+			<hr class="my-4">
+		</div>
+		<div class="btn-group-container">
+			<div class="btn-group-vertical" role="group" aria-label="Lista de botones">
+				<a href="/dispositivo" class="btn btn-primary mb-3">Lista de Dispositivos</a>
+				<a href="/camara" class="btn btn-primary mb-3">Lista de Cámaras en Aulas</a>
+				<a href="/sensorcontenedor" class="btn btn-primary mb-3">Lista de Sensores en Contenedores</a>
+				<a href="/sensorhumedad" class="btn btn-primary mb-3">Lista de Sensores en Espacios Verdes</a>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
