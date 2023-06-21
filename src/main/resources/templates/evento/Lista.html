@@ -11,20 +11,31 @@
 <body>
 	<!-- No puedo hacer que el navbar sea blanco nose porque (por ahora se queda asi)-->
 	<nav class="navbar navbar-expand bg-dark">
-        <div class="container">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/inicio">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/evento">Eventos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dispositivo">Dispositivos</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+		<div class="container">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/inicio">Inicio</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/evento">Eventos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/dispositivo">Dispositivos</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/camara">Cámara</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/sensorcontenedor">Sensor de Contenedor</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/sensorhumedad">Sensor de Humedad</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
 	<div class="container my-2" align="center">
 
@@ -44,7 +55,8 @@
 			<tbody>
 				<tr th:each="evento : ${eventos}">
 					<td th:text="${evento.idEvento}">IdEvento</td>
-					<td th:text="${T(org.hibernate.Hibernate).getClass(evento.dispositivo).getSimpleName()}">Dispositivo</td>
+					<td th:text="${T(org.hibernate.Hibernate).getClass(evento.dispositivo).getSimpleName()}">Dispositivo
+					</td>
 					<td th:text="${evento.dispositivo.idDispositivo}">IdDispositivo</td>
 					<td th:text="${evento.descripcion}">Descripcion</td>
 					<td th:text="${evento.fechaYHora}">Fecha</td>

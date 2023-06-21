@@ -11,21 +11,32 @@
 <body>
 	<!-- No puedo hacer que el navbar sea blanco nose porque (por ahora se queda asi)-->
 	<nav class="navbar navbar-expand bg-dark">
-        <div class="container">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/inicio">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/evento">Eventos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dispositivo">Dispositivos</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-	
+		<div class="container">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/inicio">Inicio</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/evento">Eventos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/dispositivo">Dispositivos</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/camara">Cámara</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/sensorcontenedor">Sensor de Contenedor</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/sensorhumedad">Sensor de Humedad</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
 	<div class="container my-2" align="center">
 
 		<h3>Lista de Sensores de Contenedor</h3>
@@ -52,7 +63,9 @@
 						</a>
 					</td>
 					<td>
-						<form th:action="@{/dispositivo/delete/{idDispositivo}(idDispositivo=${sensorContenedor.idDispositivo})}" method="post">
+						<form
+							th:action="@{/dispositivo/delete/{idDispositivo}(idDispositivo=${sensorContenedor.idDispositivo})}"
+							method="post">
 							<button type="submit" class="btn btn-info btn-sm btn-block">Eliminar</button>
 						</form>
 					</td>

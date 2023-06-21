@@ -19,8 +19,19 @@
 					<a class="nav-link" href="/evento">Eventos</a>
 				</li>
 				<li class="nav-item">
-                    <a class="nav-link" href="/dispositivo">Dispositivos</a>
-                </li>
+					<a class="nav-link" href="/dispositivo">Dispositivos</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/camara">Cámara</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/sensorcontenedor">Sensor de Contenedor</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/sensorhumedad">Sensor de Humedad</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -91,7 +102,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<h3 >Lista de Dispositivos</h3>
+		<h3>Lista de Dispositivos</h3>
 		<div th:if="${error}" class="alert alert-danger col-md-9">
 			<p th:text="${error}"></p>
 		</div>
