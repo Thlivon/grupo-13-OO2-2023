@@ -52,4 +52,10 @@ public class CamaraAula extends Dispositivo {
 		this.aula = aula;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString()+"CamaraAula [hayAlguien=" + hayAlguien + ", aula=" + aula + "]";
+	}
+
+	
 }

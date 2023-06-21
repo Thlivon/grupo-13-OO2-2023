@@ -11,10 +11,12 @@ import org.springframework.stereotype.Service;
 
 import com.unla.grupo13OO22023.entities.CamaraAula;
 import com.unla.grupo13OO22023.entities.Dispositivo;
+import com.unla.grupo13OO22023.entities.Evento;
 import com.unla.grupo13OO22023.entities.Habilitacion;
 import com.unla.grupo13OO22023.entities.SensorContenedor;
 import com.unla.grupo13OO22023.entities.SensorHumedad;
 import com.unla.grupo13OO22023.repositories.IDispositivoRepository;
+import com.unla.grupo13OO22023.repositories.IEventoRepository;
 import com.unla.grupo13OO22023.repositories.IHabilitacionRepository;
 import com.unla.grupo13OO22023.services.IDispositivoService;
 
@@ -29,6 +31,9 @@ public class DispositivoService implements IDispositivoService {
 	@Autowired
 	@Qualifier("habilitacionRepository")
 	private IHabilitacionRepository habilitacionRepository;
+	@Autowired
+	@Qualifier("eventoRepository")
+	private IEventoRepository eventoRepository;
 
 	@Override
 	public List<Dispositivo> getAll() {
@@ -39,6 +44,11 @@ public class DispositivoService implements IDispositivoService {
 	public Dispositivo findByIdDispositivo(int idDispositivo) {
 		return dispositivoRepository.findByIdDispositivo(idDispositivo);
 	}
+	@Override
+	public Dispositivo getDispositivoYEvento(int idDispositivo) {
+		return dispositivoRepository.getDispositivoYEvento(idDispositivo);
+	}
+	
 
 	@Override
 	public Dispositivo insertOrUpdate(Dispositivo d) {
@@ -62,6 +72,15 @@ public class DispositivoService implements IDispositivoService {
 			SensorHumedad aux = (SensorHumedad) findByIdDispositivo(id);
 			aux.getEspacioVerde().setSenHumedad(null);
 		}
+		
+		//Borro la lista de eventos (tambien necesaria para borrar en la bdd)
+		//Tengo que recorrer para borrar 1x1 en la base de datos
+	    Set<Evento> eventos = findByIdDispositivo(id).getEventos();
+		for (Evento evento : eventos) {
+            evento.setDispositivo(null);
+            eventoRepository.deleteById(evento.getIdEvento()); // Borro el evento especifico de la bdd, al ser un for borro TODOS
+        }
+		
 		try {
 			dispositivoRepository.deleteById(id);
 			return true;

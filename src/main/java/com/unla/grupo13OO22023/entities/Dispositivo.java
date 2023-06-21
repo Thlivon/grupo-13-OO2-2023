@@ -1,5 +1,7 @@
 package com.unla.grupo13OO22023.entities;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -33,6 +35,10 @@ public class Dispositivo {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="habilitado", nullable=false)
 	private Habilitacion habilitado;
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name="eventos", nullable=false)
+	private Set<Evento> eventos;
 	
 	
 	//Si no lo agregaba el /new me tiraba error
@@ -78,6 +84,24 @@ public class Dispositivo {
 		this.habilitado = habilitado;
 	}
 
+
+	public Set<Evento> getEventos() {
+		return eventos;
+	}
+
+
+	public void setEventos(Set<Evento> eventos) {
+		this.eventos = eventos;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Dispositivo [idDispositivo=" + idDispositivo + ", activado=" + activado + ", habilitado=" + habilitado
+				+ "]";
+	}
+
+	
 	
 
 }

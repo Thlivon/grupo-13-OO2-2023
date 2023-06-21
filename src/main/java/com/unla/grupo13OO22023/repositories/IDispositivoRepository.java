@@ -22,6 +22,9 @@ import com.unla.grupo13OO22023.entities.CamaraAula;
 public interface IDispositivoRepository extends JpaRepository<Dispositivo, Serializable> {
 	public Dispositivo findByIdDispositivo(int idDispositivo);
 	
+	@Query("SELECT d FROM Dispositivo d INNER JOIN FETCH d.eventos WHERE d.idDispositivo = :idDispositivo")
+	public Dispositivo getDispositivoYEvento(@Param("idDispositivo")int idDispositivo);
+	
 	@Query("SELECT c FROM CamaraAula c")
 	public List<CamaraAula> getAllCamaras();
 

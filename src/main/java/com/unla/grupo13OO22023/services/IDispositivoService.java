@@ -14,6 +14,7 @@ import com.unla.grupo13OO22023.entities.SensorHumedad;
 public interface IDispositivoService {
 	public List<Dispositivo> getAll();
 	public Dispositivo findByIdDispositivo(int idDispositivo);
+	public Dispositivo getDispositivoYEvento(@Param("idDispositivo")int idDispositivo);
 	public Dispositivo insertOrUpdate(Dispositivo d);
 	public boolean remove(int id);
 	
