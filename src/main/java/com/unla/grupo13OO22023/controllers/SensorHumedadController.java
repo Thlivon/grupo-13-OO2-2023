@@ -49,7 +49,7 @@ public class SensorHumedadController {
 	@GetMapping("")
 	public ModelAndView lista() {
 		ModelAndView mAV= new ModelAndView(ViewRouteHelper.SENSORHUMEDAD_LISTA); 
-		mAV.addObject("habilitacion", habilitacionService.findByNombre("Habilitacion Sensores Humedad"));
+		mAV.addObject("habilitacion", habilitacionService.findByNombre("Sensores Humedad"));
 		mAV.addObject("sensoresHumedad", dispositivoService.getAllSensoresHumedad());
 		return mAV;
 	}
@@ -71,7 +71,7 @@ public class SensorHumedadController {
   		
   		//busco en la bdd
   		EspacioVerde espacioVerde = espacioVerdeService.findByIdEspacioVerde(sensorHumedad.getEspacioVerde().getIdEspacioVerde());
-		Habilitacion habilitacion = habilitacionService.findByNombre("Habilitacion Sensores Humedad");
+		Habilitacion habilitacion = habilitacionService.findByNombre("Sensores Humedad");
 		
   	    //setteo las relaciones
 		espacioVerde.setSenHumedad(sensorHumedad);

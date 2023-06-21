@@ -64,8 +64,5 @@ public class TestAgregar {
 		habilitacionRepository.save(new Habilitacion("Habilitacion Sensores Contenedor"));
 		habilitacionRepository.save(new Habilitacion("Habilitacion Sensores Humedad"));
 		
-		
-
-		
 	}	
 }

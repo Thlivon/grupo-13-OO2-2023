@@ -10,7 +10,7 @@ import com.unla.grupo13OO22023.repositories.IDispositivoRepository;
 import com.unla.grupo13OO22023.services.IDispositivoService;
 
 @Component
-public class CamaraAulaSimulador {
+public class Simulador {
 	@Autowired
 	@Qualifier("dispositivoRepository")
 	private IDispositivoRepository dispositivoRepository;

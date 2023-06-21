@@ -51,7 +51,7 @@ public class CamaraController {
 	@GetMapping("")
 	public ModelAndView lista() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAMARA_LISTA);
-		mAV.addObject("habilitacion", habilitacionService.findByNombre("Habilitacion Camaras"));
+		mAV.addObject("habilitacion", habilitacionService.findByNombre("Camaras"));
 		mAV.addObject("camaras", dispositivoService.getAllCamaras());
 		return mAV;
 	}
@@ -74,7 +74,7 @@ public class CamaraController {
 		
 		//busco en la bdd
 	    Aula aula = aulaService.findByIdAula(camara.getAula().getIdAula());
-	    Habilitacion habilitacion = habilitacionService.findByNombre("Habilitacion Camaras");
+	    Habilitacion habilitacion = habilitacionService.findByNombre("Camaras");
 	    
 	    //setteo las relaciones
 	    aula.setCamara(camara);

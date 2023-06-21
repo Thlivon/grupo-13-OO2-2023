@@ -51,7 +51,7 @@ public class SensorContenedorController {
 	@GetMapping("")
 	public ModelAndView lista() {
 		ModelAndView mAV= new ModelAndView(ViewRouteHelper.SENSORCONTENEDOR_LISTA); 
-		mAV.addObject("habilitacion", habilitacionService.findByNombre("Habilitacion Sensores Contenedor"));
+		mAV.addObject("habilitacion", habilitacionService.findByNombre("Sensores Contenedor"));
 		mAV.addObject("sensoresContenedor", dispositivoService.getAllSensoresContenedor());
 		return mAV;
 	}
@@ -73,7 +73,7 @@ public class SensorContenedorController {
 		
 		//busco en la bdd
 		Contenedor contenedor = contenedorService.findByIdContenedor(sensorContenedor.getContenedor().getIdContenedor());
-		Habilitacion habilitacion = habilitacionService.findByNombre("Habilitacion Sensores Contenedor");
+		Habilitacion habilitacion = habilitacionService.findByNombre("Sensores Contenedor");
 		
 	    //setteo las relaciones
 		contenedor.setSensor(sensorContenedor);
