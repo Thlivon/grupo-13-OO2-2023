@@ -66,7 +66,6 @@ public class DispositivoController {
 	// CAMBIA DE PRENDIDO O APAGADO A UN DISPOSITIVO ESPECÍFICO
 	@PostMapping("/cambiaractivado/{idDispositivo}")
 	public RedirectView cambiarActivado(@PathVariable("idDispositivo") int idDispositivo, RedirectAttributes redirectAttributes, Model model) {
-		boolean habilitacion = dispositivoService.findByIdDispositivo(idDispositivo).getHabilitado().isHabilitado();
 		//busco al dispositivo en la bdd
 		Dispositivo dispositivo = dispositivoService.getDispositivoYEvento(idDispositivo);
 		//creo el evento
@@ -79,14 +78,15 @@ public class DispositivoController {
 		eventoService.insertOrUpdate(evento); 
 		
 		
-		
+		//AHORA VEO SI ESTA HABILITADO EL TIPO DE DISPOSITIVO
+		boolean habilitacion = dispositivo.getHabilitado().isHabilitado();
 		if (habilitacion) {	//Si su tipo de dispositivo esta habilitado 
-			boolean aux = dispositivoService.findByIdDispositivo(idDispositivo).isActivado();
+			boolean aux = dispositivo.isActivado();
 			dispositivoService.cambiarActivado(idDispositivo, !aux);
 			return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
 		} else {	//Si el tipo no esta habilitado, entonces no puedo activar un dispositivo. 
 			//Traigo la habilitacion que corresponde al dispositivo que falla
-			Habilitacion h = dispositivoService.findByIdDispositivo(idDispositivo).getHabilitado();
+			Habilitacion h = dispositivo.getHabilitado();
 			//Mensaje de error que se va a mostrar
 			String errorMessage = "ERROR: No se puede activar el dispositivo porque "+ h.getNombre() + " no esta habilitada";
 			redirectAttributes.addFlashAttribute("error", errorMessage);
