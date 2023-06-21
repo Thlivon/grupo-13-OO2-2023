@@ -21,11 +21,11 @@ import com.unla.grupo13OO22023.entities.Evento;
 import com.unla.grupo13OO22023.entities.Habilitacion;
 import com.unla.grupo13OO22023.entities.SensorContenedor;
 import com.unla.grupo13OO22023.entities.SensorHumedad;
-import com.unla.grupo13OO22023.entities.User;
 import com.unla.grupo13OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo13OO22023.services.IDispositivoService;
 import com.unla.grupo13OO22023.services.IEventoService;
 import com.unla.grupo13OO22023.services.IHabilitacionService;
+import org.springframework.security.core.userdetails.User;
 
 @Controller
 @RequestMapping("/dispositivo")
@@ -48,6 +48,8 @@ public class DispositivoController {
 		mAV.addObject("habilitacionCamara", habilitacionService.findByNombre("Camaras"));
 		mAV.addObject("habilitacionContenedor", habilitacionService.findByNombre("Sensores Contenedor"));
 		mAV.addObject("habilitacionHumedad", habilitacionService.findByNombre("Sensores Humedad"));
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mAV.addObject("rol", user.getUsername());
 		return mAV;
 	}
 	

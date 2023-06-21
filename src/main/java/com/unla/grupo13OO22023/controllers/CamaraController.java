@@ -24,7 +24,6 @@ import com.unla.grupo13OO22023.entities.Aula;
 import com.unla.grupo13OO22023.entities.CamaraAula;
 import com.unla.grupo13OO22023.entities.Evento;
 import com.unla.grupo13OO22023.entities.Habilitacion;
-//import com.unla.grupo13OO22023.entities.User;
 import com.unla.grupo13OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo13OO22023.services.IAulaService;
 import com.unla.grupo13OO22023.services.IDispositivoService;

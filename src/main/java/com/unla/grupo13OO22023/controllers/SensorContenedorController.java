@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.security.core.userdetails.User;
 
 import com.unla.grupo13OO22023.entities.Aula;
 import com.unla.grupo13OO22023.entities.CamaraAula;
@@ -54,6 +57,8 @@ public class SensorContenedorController {
 		ModelAndView mAV= new ModelAndView(ViewRouteHelper.SENSORCONTENEDOR_LISTA); 
 		mAV.addObject("habilitacion", habilitacionService.findByNombre("Sensores Contenedor"));
 		mAV.addObject("sensoresContenedor", dispositivoService.getAllSensoresContenedor());
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mAV.addObject("rol", user.getUsername());
 		return mAV;
 	}
 	

@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 
 import com.unla.grupo13OO22023.entities.Contenedor;
 import com.unla.grupo13OO22023.entities.EspacioVerde;
@@ -52,6 +54,8 @@ public class SensorHumedadController {
 		ModelAndView mAV= new ModelAndView(ViewRouteHelper.SENSORHUMEDAD_LISTA); 
 		mAV.addObject("habilitacion", habilitacionService.findByNombre("Sensores Humedad"));
 		mAV.addObject("sensoresHumedad", dispositivoService.getAllSensoresHumedad());
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mAV.addObject("rol", user.getUsername());
 		return mAV;
 	}
 	
