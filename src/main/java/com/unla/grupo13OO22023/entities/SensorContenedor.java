@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
-@Table(name="SensorContenedor")
+@Table(name="sensorContenedor")
 public class SensorContenedor extends Dispositivo {
 	
 	@Column(name="estaLleno")
@@ -25,9 +25,32 @@ public class SensorContenedor extends Dispositivo {
 		super();
 	}
 
-	public SensorContenedor(int idDispositivo, boolean estaLleno) {
-		super(idDispositivo);
+	public SensorContenedor(int idDispositivo, boolean activado, Habilitacion habilitado, boolean estaLleno) {
+		super(idDispositivo, activado, habilitado);
 		this.estaLleno = estaLleno;
+	}
+
+	
+	public SensorContenedor(int idDispositivo, boolean activado, Habilitacion habilitado, boolean estaLleno, Contenedor contenedor) {
+		super(idDispositivo, activado, habilitado);
+		this.estaLleno = estaLleno;
+		this.contenedor = contenedor;
+	}
+
+	public boolean isEstaLleno() {
+		return estaLleno;
+	}
+
+	public void setEstaLleno(boolean estaLleno) {
+		this.estaLleno = estaLleno;
+	}
+
+	public Contenedor getContenedor() {
+		return contenedor;
+	}
+
+	public void setContenedor(Contenedor contenedor) {
+		this.contenedor = contenedor;
 	}
 	
 	

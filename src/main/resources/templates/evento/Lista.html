@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Lista de Eventos</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<style>
+		.table-container {
+			display: flex;
+			align-items: center;
+		}
+
+		.buttons-container {
+			margin-right: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- No puedo hacer que el navbar sea blanco nose porque (por ahora se queda asi)-->
+	<nav class="navbar navbar-expand bg-dark">
+		<div class="container">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/inicio">Inicio</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/evento">Eventos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/dispositivo">Dispositivos</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/camara">Cámara</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/sensorcontenedor">Sensor de Contenedor</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/sensorhumedad">Sensor de Humedad</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container my-2" align="center">
+
+		<h3>Lista de Eventos</h3>
+		<!-- Cuando le dan click se referencia a otro controller por eso falla) -->
+		<div class="buttons-container mb-2">
+			<!-- Aquí van tus botones -->
+			<a class="btn btn-secondary text-white" th:href="@{/evento/1}">
+				Cámaras 
+			</a>
+			<a class="btn btn-secondary text-white" th:href="@{/evento/2}">
+				Sensores Contenedor 
+			</a>
+			<a class="btn btn-secondary text-white" th:href="@{/evento/3}">
+				Sensores Humedad
+			</a>
+			<a class="btn btn-secondary text-white" th:href="@{/evento/ultimos10}">
+				Últimos 10 Eventos
+			</a>
+		</div>
+		<div class="table-container">
+			<table style="width:110%" border="1" class="table table-striped table-responsive-md">
+				<thead>
+					<tr>
+						<th>IdEvento</th>
+						<th>Dispositivo</th>
+						<th>IdDispositivo</th>
+						<th>Descripcion</th>
+						<th>Fecha</th>
+						<th></th>
+					</tr>
+				</thead>
+				<!-- Modificar referenciando a lo nuestro (todavia nose bien como se hace) -->
+				<tbody>
+					<tr th:each="evento : ${eventos}">
+						<td th:text="${evento.idEvento}">IdEvento</td>
+						<td th:text="${T(org.hibernate.Hibernate).getClass(evento.dispositivo).getSimpleName()}">
+							Dispositivo
+						</td>
+						<td th:text="${evento.dispositivo.idDispositivo}">IdDispositivo</td>
+						<td th:text="${evento.descripcion}">Descripcion</td>
+						<td th:text="${evento.fechaYHora}">Fecha</td>
+						<td>
+							<a
+								th:href="@{/dispositivo/{idDispositivo}(idDispositivo=${evento.dispositivo.idDispositivo})}">
+								Eventos del dispositivo
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>

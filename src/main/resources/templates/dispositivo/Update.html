@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos del Dispositivo</title>
+</head>
+<body>
+	<!-- No puedo hacer que el navbar sea blanco nose porque (por ahora se queda asi)-->
+	<nav class="navbar navbar-nav ">
+		<div class="container">
+			<a class="navbar-brand" href="/inicio">Inicio</a>
+		</div>
+	</nav>
+	
+	
+    <h1>Eventos del Dispositivo</h1>
+
+    <form action="#" th:action="@{/dispositivo/update}" th:object="${dispositivo}" method="post">
+        <input type="hidden" th:field="*{idDispositivo}" />
+        <p>
+            <!-- Otros campos del formulario -->
+        </p>
+        <input type="submit" value="Update" />
+    </form>
+
+    <form action="#" th:action="@{/dispositivo/delete/{idDispositivo}(idDispositivo=${dispositivo.idDispositivo})}" method="post">
+        <input type="submit" value="Delete" />
+    </form>
+</body>
+</html>

@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
-@Table(name="SensorHumedad")
+@Table(name="sensorHumedad")
 
 public class SensorHumedad extends Dispositivo{
 	
@@ -22,9 +22,33 @@ public class SensorHumedad extends Dispositivo{
 	@JoinColumn(name="espacioVerde")
 	private EspacioVerde espacioVerde;
 
-	public SensorHumedad(int idDispositivo, EspacioVerde espacioVerde) {
-		super(idDispositivo, false);
+	public SensorHumedad(int idDispositivo, boolean activado, Habilitacion habilitado, EspacioVerde espacioVerde) {
+		super(idDispositivo, activado, habilitado);
 		this.tempBaja = false;
+		this.espacioVerde = espacioVerde;
+	}
+
+	public SensorHumedad(int idDispositivo, boolean activado, Habilitacion habilitado, boolean tempBaja, EspacioVerde espacioVerde) {
+		super(idDispositivo, activado, habilitado);
+		this.tempBaja = tempBaja;
+		this.espacioVerde = espacioVerde;
+	}
+
+	public SensorHumedad() {}
+
+	public boolean isTempBaja() {
+		return tempBaja;
+	}
+
+	public void setTempBaja(boolean tempBaja) {
+		this.tempBaja = tempBaja;
+	}
+
+	public EspacioVerde getEspacioVerde() {
+		return espacioVerde;
+	}
+
+	public void setEspacioVerde(EspacioVerde espacioVerde) {
 		this.espacioVerde = espacioVerde;
 	}
 

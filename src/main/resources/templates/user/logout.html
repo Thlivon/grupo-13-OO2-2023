@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>UNLa</title>
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<style>
+		.jumbotron {
+			background-color: #343a40;
+			color: #fff;
+			padding: 2rem;
+		}
+		</style>
+	</head>
+	<body>
+	    <!-- Page Content -->
+	    <div class="container">
+	      <div class="jumbotron">
+	      	<h1 class="display-5 alert alert-info">Logout Successfully.</h1>
+	        <h1 class="display-5">Login</h1>
+	        <form th:action="@{/loginprocess}" method="post">
+		      	<input type="text" name="username" id="username" placeholder="Username" />
+		      	<input type="password" name="password" id="password" placeholder="Password" />
+		      	<input type="submit" />
+	      	</form>
+	      </div>
+	    </div>
+	</body>
+</html>
