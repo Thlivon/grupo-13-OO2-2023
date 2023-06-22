@@ -19,5 +19,5 @@
 
 ## Usuarios creados por el `script base de datos.sql`.
 
-- Usuario Administrador: username: admin password: admin
-- Usuario Auditor: username: user password: user
+- **Usuario Administrador** username: admin password: admin
+- **Usuario Auditor** username: user password: user
