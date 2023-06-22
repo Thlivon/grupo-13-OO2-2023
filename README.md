@@ -14,3 +14,12 @@
 
 - Correr el servidor localmente.
 - Ejecutar script `script base de datos.sql`.
+
+## Diagrama UML de Clases:
+
+- [Diagrama](https://drive.google.com/file/d/1a1IWp8vtZrmnuqSh_PgPmMN7BZbXd5HF/view?usp=sharing).
+
+## Usuarios creados por el `script base de datos.sql`.
+
+- Usuario Administrador: username: admin password: admin
+- Usuario Auditor: username: user password: user
