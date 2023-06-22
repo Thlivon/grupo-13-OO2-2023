@@ -44,13 +44,6 @@ public class EventoService implements IEventoService {
 	}
 	
 	public List<Evento> getAllEventosPorTipo(int idHabilitacion){
-		List<Evento> evento = new ArrayList<Evento>();
-		Habilitacion habilitacion = habilitacionRepository.findByIdHabilitacion(idHabilitacion);
-		for (Evento e: eventoRepository.getAllEventosSinId()) {
-			if (e.getDispositivo().getHabilitado().equals(habilitacion)) {
-				evento.add(e);
-			}
-		}
-		return evento;
+		return eventoRepository.getAllEventosPorTipo(idHabilitacion);
 	}
 }

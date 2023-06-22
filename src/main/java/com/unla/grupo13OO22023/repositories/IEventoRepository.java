@@ -20,4 +20,8 @@ public interface IEventoRepository extends JpaRepository<Evento, Serializable> {
 	@Query("SELECT e FROM Evento e INNER JOIN FETCH e.dispositivo d WHERE d.idDispositivo = :idDispositivo")
     public List<Evento> getAllEventos(@Param("idDispositivo")int idDispositivo);
 	
+	@Query("SELECT e FROM Evento e INNER JOIN FETCH e.dispositivo d WHERE d.habilitado.idHabilitacion = :idHabilitacion")
+	public List<Evento> getAllEventosPorTipo(@Param("idHabilitacion") int idHabilitacion);
+
+	
 }
