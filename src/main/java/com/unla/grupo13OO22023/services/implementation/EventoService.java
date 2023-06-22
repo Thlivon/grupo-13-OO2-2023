@@ -1,6 +1,7 @@
 package com.unla.grupo13OO22023.services.implementation;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.unla.grupo13OO22023.entities.Dispositivo;
 import com.unla.grupo13OO22023.entities.Evento;
+import com.unla.grupo13OO22023.entities.Habilitacion;
 import com.unla.grupo13OO22023.repositories.IEventoRepository;
+import com.unla.grupo13OO22023.repositories.IHabilitacionRepository;
 import com.unla.grupo13OO22023.services.IEventoService;
 
 @Service("eventoService")
@@ -17,6 +20,9 @@ public class EventoService implements IEventoService {
 	@Autowired
 	@Qualifier("eventoRepository")
 	private IEventoRepository eventoRepository;
+	@Autowired
+	@Qualifier("habilitacionRepository")
+	private IHabilitacionRepository habilitacionRepository;
 	
 	@Override
 	public List<Evento> getAll(){
@@ -35,5 +41,16 @@ public class EventoService implements IEventoService {
 	
 	public List<Evento> getAllEventos(int idDispositivo){
 		return eventoRepository.getAllEventos(idDispositivo);
+	}
+	
+	public List<Evento> getAllEventosPorTipo(int idHabilitacion){
+		List<Evento> evento = new ArrayList<Evento>();
+		Habilitacion habilitacion = habilitacionRepository.findByIdHabilitacion(idHabilitacion);
+		for (Evento e: eventoRepository.getAllEventosSinId()) {
+			if (e.getDispositivo().getHabilitado().equals(habilitacion)) {
+				evento.add(e);
+			}
+		}
+		return evento;
 	}
 }

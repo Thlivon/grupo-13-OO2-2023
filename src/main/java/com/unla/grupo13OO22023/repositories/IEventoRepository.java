@@ -14,6 +14,10 @@ import com.unla.grupo13OO22023.entities.Evento;
 public interface IEventoRepository extends JpaRepository<Evento, Serializable> {
 	public Evento findByIdEvento(int idEvento);
 	
+	@Query("SELECT e FROM Evento e INNER JOIN FETCH e.dispositivo d ")
+	public List<Evento> getAllEventosSinId();
+	
 	@Query("SELECT e FROM Evento e INNER JOIN FETCH e.dispositivo d WHERE d.idDispositivo = :idDispositivo")
     public List<Evento> getAllEventos(@Param("idDispositivo")int idDispositivo);
+	
 }

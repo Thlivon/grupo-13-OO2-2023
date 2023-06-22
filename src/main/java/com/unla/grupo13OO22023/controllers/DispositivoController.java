@@ -1,5 +1,7 @@
 package com.unla.grupo13OO22023.controllers;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -123,6 +125,7 @@ public class DispositivoController {
         mAV.addObject("eventos", dispositivo.getEventos());
         return mAV;
     }
+	
 	
 
 }

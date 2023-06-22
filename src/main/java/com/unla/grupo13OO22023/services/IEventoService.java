@@ -13,4 +13,5 @@ public interface IEventoService {
 	public Evento insertOrUpdate(Evento e);
 	
 	public List<Evento> getAllEventos(int idDispositivo);
+	public List<Evento> getAllEventosPorTipo(int idHabilitacion);
 }
