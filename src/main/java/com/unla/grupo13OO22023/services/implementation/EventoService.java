@@ -46,4 +46,7 @@ public class EventoService implements IEventoService {
 	public List<Evento> getAllEventosPorTipo(int idHabilitacion){
 		return eventoRepository.getAllEventosPorTipo(idHabilitacion);
 	}
+	public List<Evento> findFirst10ByOrderByFechaYHoraDesc(){
+		return eventoRepository.findFirst10ByOrderByFechaYHoraDesc();
+	}
 }

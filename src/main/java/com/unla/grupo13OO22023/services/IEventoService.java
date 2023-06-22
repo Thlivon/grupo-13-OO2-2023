@@ -11,6 +11,7 @@ public interface IEventoService {
 	public List<Evento> getAll();
 	public Evento findByIdEvento(int idEvento);
 	public Evento insertOrUpdate(Evento e);
+	public List<Evento> findFirst10ByOrderByFechaYHoraDesc();
 	
 	public List<Evento> getAllEventos(int idDispositivo);
 	public List<Evento> getAllEventosPorTipo(int idHabilitacion);

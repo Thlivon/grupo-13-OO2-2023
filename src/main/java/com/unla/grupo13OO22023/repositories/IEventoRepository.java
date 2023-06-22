@@ -13,8 +13,9 @@ import com.unla.grupo13OO22023.entities.Evento;
 @Repository("eventoRepository")
 public interface IEventoRepository extends JpaRepository<Evento, Serializable> {
 	public Evento findByIdEvento(int idEvento);
+	public List<Evento> findFirst10ByOrderByFechaYHoraDesc();
 	
-	@Query("SELECT e FROM Evento e INNER JOIN FETCH e.dispositivo d ")
+	@Query("SELECT e FROM Evento e INNER JOIN FETCH e.dispositivo d")
 	public List<Evento> getAllEventosSinId();
 	
 	@Query("SELECT e FROM Evento e INNER JOIN FETCH e.dispositivo d WHERE d.idDispositivo = :idDispositivo")
@@ -23,5 +24,6 @@ public interface IEventoRepository extends JpaRepository<Evento, Serializable> {
 	@Query("SELECT e FROM Evento e INNER JOIN FETCH e.dispositivo d WHERE d.habilitado.idHabilitacion = :idHabilitacion")
 	public List<Evento> getAllEventosPorTipo(@Param("idHabilitacion") int idHabilitacion);
 
+	
 	
 }
