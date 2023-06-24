@@ -3,7 +3,7 @@
 - Lautaro Medina: `Recolectores Inteligentes`
 - Livon Thomas: `Cuidado del espacio verde inteligente`
 
-## Indicaciones para la base de datos:
+## Indicaciones de conexión a la base de datos:
 
 - Crear localmente la base de datos: `create database smartcity_unla`.
 - Dirigirse a `src/main/resources/templates/application.yml`.
