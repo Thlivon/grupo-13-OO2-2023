@@ -5,7 +5,7 @@
 
 ## [Diagrama UML de Clases](https://drive.google.com/file/d/1a1IWp8vtZrmnuqSh_PgPmMN7BZbXd5HF/view?usp=sharing)
 
-## [Video][(https://drive.google.com/file/d/1z7-6wjvcrQN-W2feWjcOT2jav_65XYk0/view)
+## [Video](https://drive.google.com/file/d/1z7-6wjvcrQN-W2feWjcOT2jav_65XYk0/view)
 
 ## Indicaciones de conexión a la base de datos:
 
