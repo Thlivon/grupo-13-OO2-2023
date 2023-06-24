@@ -44,7 +44,9 @@
 					<th>Id</th>
 					<th>Nombre</th>
 					<th>Habilitado</th>
-					<th></th>
+					<div th:if="${rol == 'admin'}">
+						<th></th>
+					</div>
 					<th></th>
 				</tr>
 			</thead>
@@ -53,16 +55,18 @@
 					<td th:text="${habilitacionCamara.idHabilitacion}">Id</td>
 					<td>Camaras</td>
 					<td th:text="${habilitacionCamara.habilitado}">Habilitado</td>
+					<div th:if="${rol == 'admin'}">
+						<td>
+							<form
+								th:action="@{/dispositivo/cambiarhabilitacion/{idHabilitacion}(idHabilitacion=${habilitacionCamara.idHabilitacion})}"
+								method="post">
+								<button type="submit" class="btn btn-info btn-sm btn-block">Act./Desac.</button>
+							</form>
+						</td>
+					</div>
 					<td>
-						<form
-							th:action="@{/dispositivo/cambiarhabilitacion/{idHabilitacion}(idHabilitacion=${habilitacionCamara.idHabilitacion})}"
-							method="post">
-							<button type="submit" class="btn btn-info btn-sm btn-block">Act./Desac.</button>
-						</form>
-					</td>
-					<td>
-						<a th:href="@{camara}">
-							Ver tipo
+						<a th:href="@{/evento/{idHabilitacion}(idHabilitacion=${habilitacionCamara.idHabilitacion})}">
+							Ver eventos
 						</a>
 					</td> <!-- Cierre de la etiqueta <td> agregado -->
 				</tr>
@@ -70,16 +74,18 @@
 					<td th:text="${habilitacionContenedor.idHabilitacion}">Id</td>
 					<td>Sensores Contenedor</td>
 					<td th:text="${habilitacionContenedor.habilitado}">Habilitado</td>
+					<div th:if="${rol == 'admin'}">
+						<td>
+							<form
+								th:action="@{/dispositivo/cambiarhabilitacion/{idHabilitacion}(idHabilitacion=${habilitacionContenedor.idHabilitacion})}"
+								method="post">
+								<button type="submit" class="btn btn-info btn-sm btn-block">Act./Desac.</button>
+							</form>
+						</td>
+					</div>
 					<td>
-						<form
-							th:action="@{/dispositivo/cambiarhabilitacion/{idHabilitacion}(idHabilitacion=${habilitacionContenedor.idHabilitacion})}"
-							method="post">
-							<button type="submit" class="btn btn-info btn-sm btn-block">Act./Desac.</button>
-						</form>
-					</td>
-					<td>
-						<a th:href="@{sensorcontenedor}">
-							Ver tipo
+						<a th:href="@{/evento/{idHabilitacion}(idHabilitacion=${habilitacionContenedor.idHabilitacion})}">
+							Ver eventos
 						</a>
 					</td> <!-- Cierre de la etiqueta <td> agregado -->
 				</tr>
@@ -87,16 +93,18 @@
 					<td th:text="${habilitacionHumedad.idHabilitacion}">Id</td>
 					<td>Sensores Humedad</td>
 					<td th:text="${habilitacionHumedad.habilitado}">Habilitado</td>
+					<div th:if="${rol == 'admin'}">
+						<td>
+							<form
+								th:action="@{/dispositivo/cambiarhabilitacion/{idHabilitacion}(idHabilitacion=${habilitacionHumedad.idHabilitacion})}"
+								method="post">
+								<button type="submit" class="btn btn-info btn-sm btn-block">Act./Desac.</button>
+							</form>
+						</td>
+					</div>
 					<td>
-						<form
-							th:action="@{/dispositivo/cambiarhabilitacion/{idHabilitacion}(idHabilitacion=${habilitacionHumedad.idHabilitacion})}"
-							method="post">
-							<button type="submit" class="btn btn-info btn-sm btn-block">Act./Desac.</button>
-						</form>
-					</td>
-					<td>
-						<a th:href="@{sensorhumedad}">
-							Ver tipo
+						<a th:href="@{/evento/{idHabilitacion}(idHabilitacion=${habilitacionHumedad.idHabilitacion})}">
+							Ver eventos
 						</a>
 					</td> <!-- Cierre de la etiqueta <td> agregado -->
 				</tr>
@@ -112,7 +120,9 @@
 					<th>Id</th>
 					<th>Tipo</th>
 					<th>Activada</th>
-					<th></th>
+					<div th:if="${rol == 'admin'}">
+						<th></th>
+					</div>
 					<th></th>
 				</tr>
 			</thead>
@@ -121,13 +131,15 @@
 					<td th:text="${dispositivo.idDispositivo}">Id</td>
 					<td th:text="${dispositivo.getClass().getSimpleName()}">Tipo</td>
 					<td th:text="${dispositivo.activado}">Activada</td>
-					<td>
-						<form
-							th:action="@{/dispositivo/cambiaractivado/{idDispositivo}(idDispositivo=${dispositivo.idDispositivo})}"
-							method="post">
-							<button type="submit" class="btn btn-info btn-sm btn-block">Act./Desac.</button>
-						</form>
-					</td>
+					<div th:if="${rol == 'admin'}">
+						<td>
+							<form
+								th:action="@{/dispositivo/cambiaractivado/{idDispositivo}(idDispositivo=${dispositivo.idDispositivo})}"
+								method="post">
+								<button type="submit" class="btn btn-info btn-sm btn-block">Act./Desac.</button>
+							</form>
+						</td>
+					</div>
 					<td>
 						<a th:href="@{/dispositivo/{idDispositivo}(idDispositivo=${dispositivo.idDispositivo})}">
 							Ver eventos

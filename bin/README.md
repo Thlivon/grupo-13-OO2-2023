@@ -3,7 +3,7 @@
 - Lautaro Medina: `Recolectores Inteligentes`
 - Livon Thomas: `Cuidado del espacio verde inteligente`
 
-## Indicaciones para la base de datos:
+## Indicaciones de conexión a la base de datos:
 
 - Crear localmente la base de datos: `create database smartcity_unla`.
 - Dirigirse a `src/main/resources/templates/application.yml`.
@@ -13,4 +13,11 @@
 ## Indicaciones para cargar la base de datos:
 
 - Correr el servidor localmente.
-- Ejecutar `TestAgregar`.
+- Ejecutar script `script base de datos.sql`.
+
+## [Diagrama UML de Clases](https://drive.google.com/file/d/1a1IWp8vtZrmnuqSh_PgPmMN7BZbXd5HF/view?usp=sharing)
+
+## Usuarios creados por el `script base de datos.sql`.
+
+- **Usuario Administrador** username: admin password: admin
+- **Usuario Auditor** username: user password: user

@@ -24,13 +24,7 @@ public class Simulador {
     
     private ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     
-    @Scheduled(fixedDelay = 1000)
-    public void myScheduledMethod() {
-        int delay = (int) (Math.random() * 20000);
-        // Programar la tarea con el retraso variable
-        executorService.schedule(this::runJob, delay, TimeUnit.MILLISECONDS);
-    }
-    
+    @Scheduled(fixedDelay = 10000)  
     public void runJob() {
         // obtengo lista de camaras creadas del momento
         int aleatorio = (int) (Math.random() * dispositivoRepository.getAllDispositivoYAtributos().size());
