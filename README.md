@@ -3,6 +3,10 @@
 - Lautaro Medina: `Recolectores Inteligentes`
 - Livon Thomas: `Cuidado del espacio verde inteligente`
 
+## [Diagrama UML de Clases](https://drive.google.com/file/d/1a1IWp8vtZrmnuqSh_PgPmMN7BZbXd5HF/view?usp=sharing)
+
+## [Video][(https://drive.google.com/file/d/1z7-6wjvcrQN-W2feWjcOT2jav_65XYk0/view)
+
 ## Indicaciones de conexión a la base de datos:
 
 - Crear localmente la base de datos: `create database smartcity_unla`.
@@ -14,8 +18,6 @@
 
 - Correr el servidor localmente.
 - Ejecutar script `script base de datos.sql`.
-
-## [Diagrama UML de Clases](https://drive.google.com/file/d/1a1IWp8vtZrmnuqSh_PgPmMN7BZbXd5HF/view?usp=sharing)
 
 ## Usuarios creados por el `script base de datos.sql`.
 
